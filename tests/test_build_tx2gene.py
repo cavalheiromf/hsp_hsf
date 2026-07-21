@@ -66,6 +66,33 @@ class Tx2GeneTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "multiple parent genes"):
                 extract_mapping(gff, fasta)
 
+    def test_rejects_parent_that_is_not_a_gene(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            gff = root / "annotation.gff3"
+            gff.write_text(
+                "1\ttest\tmRNA\t1\t10\t.\t+\t.\tID=transcript:t1;Parent=transcript:parent\n",
+                encoding="utf-8",
+            )
+            fasta = root / "transcriptome.fa"
+            fasta.write_text(">transcript:t1\nAAA\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Parent must be a gene"):
+                extract_mapping(gff, fasta)
+
+    def test_rejects_duplicate_gff3_transcript_identifier(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            gff = root / "annotation.gff3"
+            gff.write_text(
+                "1\ttest\tmRNA\t1\t10\t.\t+\t.\tID=transcript:t1;Parent=gene:g1\n"
+                "1\ttest\tmRNA\t20\t30\t.\t+\t.\tID=transcript:t1;Parent=gene:g1\n",
+                encoding="utf-8",
+            )
+            fasta = root / "transcriptome.fa"
+            fasta.write_text(">transcript:t1\nAAA\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Duplicate GFF3 transcript identifier: transcript:t1"):
+                extract_mapping(gff, fasta)
+
 
 if __name__ == "__main__":
     unittest.main()

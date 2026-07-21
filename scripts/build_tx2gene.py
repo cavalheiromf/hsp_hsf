@@ -54,10 +54,12 @@ def extract_mapping(gff3: Path, transcriptome: Path) -> list[tuple[str, str]]:
                 raise ValueError(f"mRNA lacks ID or Parent at {gff3}:{line_number}")
             if len(parents) != 1:
                 raise ValueError(f"Transcript {transcript} has multiple parent genes")
+            if not parents[0].startswith("gene:"):
+                raise ValueError(f"Parent must be a gene for transcript {transcript}")
             gene = parents[0].removeprefix("gene:")
-            previous = mapping.setdefault(transcript, gene)
-            if previous != gene:
-                raise ValueError(f"Transcript {transcript} maps to both {previous} and {gene}")
+            if transcript in mapping:
+                raise ValueError(f"Duplicate GFF3 transcript identifier: {transcript}")
+            mapping[transcript] = gene
 
     indexed = fasta_ids(transcriptome)
     missing = [transcript for transcript in indexed if transcript not in mapping]
