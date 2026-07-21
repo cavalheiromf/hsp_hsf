@@ -329,7 +329,7 @@ Expected after Git metadata restoration: one commit containing only the manifest
 - Create on execution: `results/rnaseq/tx2gene/<species>.tsv`
 
 **Interfaces:**
-- Consumes: GFF3 `mRNA` features and the first token of each indexed `transcriptome.fa` header.
+- Consumes: GFF3 transcriptional features with an `ID` and exactly one `Parent=gene:` relation (including `mRNA` and non-coding RNA features) and the first token of each indexed `transcriptome.fa` header.
 - Produces: `extract_mapping(gff3: Path, transcriptome: Path) -> list[tuple[str, str]]` where transcript IDs exactly match Salmon feature names and gene IDs omit only the leading `gene:` namespace.
 
 - [ ] **Step 1: Write failing GFF3/FASTA agreement tests**
@@ -447,11 +447,11 @@ def extract_mapping(gff3: Path, transcriptome: Path) -> list[tuple[str, str]]:
             fields = line.rstrip("\n").split("\t")
             if len(fields) != 9:
                 raise ValueError(f"Malformed GFF3 row at {gff3}:{line_number}")
-            if fields[2] != "mRNA":
-                continue
             attributes = parse_attributes(fields[8])
             transcript = attributes.get("ID")
             parents = attributes.get("Parent", "").split(",")
+            if fields[2] != "mRNA" and (not transcript or not parents[0].startswith("gene:")):
+                continue
             if not transcript or not parents[0]:
                 raise ValueError(f"mRNA lacks ID or Parent at {gff3}:{line_number}")
             if len(parents) != 1:

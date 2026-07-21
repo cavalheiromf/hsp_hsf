@@ -101,6 +101,8 @@ One mapping is generated per species from the same Ensembl Plants release 63 GFF
 - identifier compatibility between `tx2gene` and `quant.sf`;
 - an explicit report of any indexed transcript without a gene mapping.
 
+The mapping includes every indexed transcriptional feature with an `ID` and exactly one `Parent=gene:` relation, including both `mRNA` and non-coding RNA features such as tRNA, rRNA, and small RNAs.
+
 Unmapped transcripts are not silently discarded. Any non-zero gap blocks gene-matrix publication until reviewed.
 
 ## 8. Matrix generation with tximport
