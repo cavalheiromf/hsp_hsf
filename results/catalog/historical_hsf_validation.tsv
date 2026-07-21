@@ -1,0 +1,48 @@
+species	historical_id	historical_sequence_length	mapped_gene_id	current_protein_id	current_protein_length	recovered_by_hmmer	confirmed_by_interproscan	sequence_status	discrepancy_category	notes
+setaria_viridis	Sevir.7G215000.1.p	306	SEVIR_7G215000v2	TKW06022	306	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G396100.1.p	312	SEVIR_9G396100v2	TKV95941	312	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.2G238700.1.p	402	SEVIR_2G238700v2	TKW33478	402	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.5G310000.1.p	265	SEVIR_5G310000v2	TKW16605	265	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G006100.1.p	524	SEVIR_9G006100v2	TKV90102	524	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.2G292500.4.p	400	SEVIR_2G292500v2	TKW34232	401	true	true	sequence_changed	sequence_or_annotation_inconsistency	Locus is recovered as HSF, but no release-63 isoform is sequence-identical.
+setaria_viridis	Sevir.5G240300.1.p	317	SEVIR_5G240300v2	TKW15489	317	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G247200.9.p	389	SEVIR_9G247200v2	TKV93759	389	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.4G148600.1.p	269	SEVIR_4G148600v2	TKW21869	269	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.5G321500.1.p	448	SEVIR_5G321500v2	TKW16772	448	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.2G056600.1.p	365	SEVIR_2G056600v2	TKW30724	365	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.2G239900.1.p	309	SEVIR_2G239900v2	TKW33493	309	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G055900.3.p	339	SEVIR_9G055900v2	TKV90842	339	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.3G173100.1.p	449	SEVIR_3G173100v2	TKW26223	449	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G094300.1.p	379	SEVIR_9G094300v2	TKV91401	379	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.2G419800.1.p	310	SEVIR_2G419800v2	TKW36119	310	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.6G242500.1.p	415	SEVIR_6G242500v2	TKW11600	415	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.1G166400.2.p	482	SEVIR_1G166400v2	TKW39245	482	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.1G181200.1.p	511	SEVIR_1G181200v2	TKW39469	511	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.5G208300.3.p	387	SEVIR_5G208300v2	TKW15087	311	true	true	sequence_changed	sequence_or_annotation_inconsistency	Locus is recovered as HSF, but no release-63 isoform is sequence-identical.
+setaria_viridis	Sevir.9G488900.1.p	423	SEVIR_9G488900v2	TKV97357	423	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.1G026200.1.p	278	SEVIR_1G026200v2	TKW37096	278	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+setaria_viridis	Sevir.9G536200.1.p	384	SEVIR_9G536200v2	TKV98065	384	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.007G180300.2.p	401	SORBI_3007G180300	OQU80758	401	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.004G150400.1.p	485	SORBI_3004G150400	EES05094	485	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.003G226800.1.p	365	SORBI_3003G226800	EES01103	365	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.006G182800.1.p	306	SORBI_3006G182800	OQU82174	306	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.002G224200.1.p	418	SORBI_3002G224200	EER96844	418	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.004G163200.1.p	496	SORBI_3004G163200	EES06898	496	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.003G194400.1.p	394	SORBI_3003G194400	EES00942	394	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.002G271100.3.p	401	SORBI_3002G271100	OQU89801	401	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.009G208000.2.p	476	SORBI_3009G208000	EES18551	476	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.010G170600.1.p	417	SORBI_3010G170600	KXG20211	417	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.002G392500.1.p	312	SORBI_3002G392500	EER99785	312	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.003G295900.1.p	434	SORBI_3003G295900	EES01479	434	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G057700.1.p	339	SORBI_3001G057700	EER93298	339	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G361100.1.p	313	SORBI_3001G361100	EER92222	313	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G007200.2.p	527	SORBI_3001G007200	EER93074	527	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G093200.1.p	371	SORBI_3001G093200	EER90889	371	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G243000.1.p	362	SORBI_3001G243000	EER94213	362	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.003G286700.1.p	260	SORBI_3003G286700	KXG33312	260	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.004G101400.2.p	276	SORBI_3004G101400	KXG29862	267	true	true	sequence_changed	sequence_or_annotation_inconsistency	Locus is recovered as HSF, but no release-63 isoform is sequence-identical.
+sorghum_bicolor	Sobic.010G164400.1.p	279	SORBI_3010G164400	EER89919	279	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.002G051900.1.p	372	SORBI_3002G051900	EER95940	372	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G450700.2.p	442	SORBI_3001G450700	EER95242	415	true	true	sequence_changed	sequence_or_annotation_inconsistency	Locus is recovered as HSF, but no release-63 isoform is sequence-identical.
+sorghum_bicolor	Sobic.002G225300.1.p	315	SORBI_3002G225300	EER96851	315	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.
+sorghum_bicolor	Sobic.001G496200.1.p	391	SORBI_3001G496200	EER95463	391	true	true	identical_to_representative	updated_identifier	Historical sequence is identical to the selected release-63 protein.

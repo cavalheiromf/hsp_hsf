@@ -1,0 +1,4 @@
+species	gene_id	protein_id	classification_status	reason
+setaria_viridis	SEVIR_1G026300v2	TKW37097	confirmed	release-63 HSF candidate absent from the historical PF00447 set
+setaria_viridis	SEVIR_4G250200v2	TKW22774	confirmed	release-63 HSF candidate absent from the historical PF00447 set
+setaria_viridis	SEVIR_4G250400v2	TKW22776	confirmed	release-63 HSF candidate absent from the historical PF00447 set
