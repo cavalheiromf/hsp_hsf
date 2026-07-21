@@ -5,6 +5,56 @@ write_matrix <- function(matrix, path) {
   write.table(output, path, sep = "\t", quote = FALSE, row.names = FALSE)
 }
 
+read_output_matrix <- function(path, expected_features, expected_samples, positive = FALSE) {
+  table <- read.delim(path, stringsAsFactors = FALSE, check.names = FALSE)
+  expected_columns <- c("feature_id", expected_samples)
+  if (!identical(names(table), expected_columns)) {
+    stop("Matrix columns are not aligned: ", path)
+  }
+  if (!identical(table$feature_id, expected_features)) {
+    stop("Matrix features are not aligned: ", path)
+  }
+  values <- as.matrix(table[, expected_samples, drop = FALSE])
+  storage.mode(values) <- "numeric"
+  if (any(!is.finite(values)) || any(values < 0) || (positive && any(values <= 0))) {
+    stop("Matrix contains invalid numeric values: ", path)
+  }
+  invisible(table)
+}
+
+validate_species_output <- function(output_dir, sample_rows, tx2gene) {
+  expected_files <- c(
+    "transcript_counts.tsv", "transcript_tpm.tsv", "gene_counts.tsv",
+    "gene_tpm.tsv", "effective_lengths.tsv", "sample_metadata.tsv"
+  )
+  paths <- file.path(output_dir, expected_files)
+  missing <- paths[!file.exists(paths) | file.info(paths)$size == 0]
+  if (length(missing) > 0L) {
+    stop("Missing or empty staged output: ", paste(missing, collapse = ", "))
+  }
+
+  samples <- sample_rows$sample_id
+  transcripts <- tx2gene$transcript_id
+  genes <- unique(tx2gene$gene_id)
+  read_output_matrix(paths[[1L]], transcripts, samples)
+  read_output_matrix(paths[[2L]], transcripts, samples)
+  read_output_matrix(paths[[3L]], genes, samples)
+  read_output_matrix(paths[[4L]], genes, samples)
+  read_output_matrix(paths[[5L]], genes, samples, positive = TRUE)
+
+  metadata <- read.delim(paths[[6L]], stringsAsFactors = FALSE, check.names = FALSE)
+  if (!identical(names(metadata), names(sample_rows)) || nrow(metadata) != nrow(sample_rows)) {
+    stop("Staged sample metadata shape is not aligned: ", paths[[6L]])
+  }
+  aligned <- vapply(
+    names(sample_rows),
+    function(column) identical(as.character(metadata[[column]]), as.character(sample_rows[[column]])),
+    logical(1)
+  )
+  if (!all(aligned)) stop("Staged sample metadata values are not aligned: ", paths[[6L]])
+  invisible(TRUE)
+}
+
 require_columns <- function(table, required, label) {
   missing <- setdiff(required, names(table))
   if (length(missing) > 0L) {
@@ -77,6 +127,16 @@ import_species <- function(sample_rows, quant_root, tx2gene_path, output_dir) {
   gene <- tximport::tximport(
     files, type = "salmon", tx2gene = tx2gene, countsFromAbundance = "no"
   )
+  transcript_order <- match(tx2gene$transcript_id, rownames(transcript$counts))
+  gene_ids <- unique(tx2gene$gene_id)
+  gene_order <- match(gene_ids, rownames(gene$counts))
+  if (anyNA(transcript_order) || anyNA(gene_order)) {
+    stop("tximport output does not contain every expected feature")
+  }
+  for (name in c("abundance", "counts", "length")) {
+    transcript[[name]] <- transcript[[name]][transcript_order, , drop = FALSE]
+    gene[[name]] <- gene[[name]][gene_order, , drop = FALSE]
+  }
   expected_samples <- sample_rows$sample_id
   matrices <- list(
     transcript$counts, transcript$abundance, gene$counts, gene$abundance, gene$length
@@ -97,7 +157,72 @@ import_species <- function(sample_rows, quant_root, tx2gene_path, output_dir) {
     sample_rows, file.path(output_dir, "sample_metadata.tsv"),
     sep = "\t", quote = FALSE, row.names = FALSE
   )
+  validate_species_output(output_dir, sample_rows, tx2gene)
   invisible(list(transcript = transcript, gene = gene))
+}
+
+publish_collection <- function(manifest, quant_root, tx2gene_root, output_root) {
+  if (nrow(manifest) == 0L) stop("Cannot publish an empty sample collection")
+  require_columns(manifest, c("sample_id", "species"), "selected manifest")
+  if (anyNA(manifest$species) || any(!nzchar(manifest$species))) {
+    stop("Selected manifest contains an empty species")
+  }
+
+  parent <- dirname(output_root)
+  dir.create(parent, recursive = TRUE, showWarnings = FALSE)
+  if (!dir.exists(parent)) stop("Cannot create output parent: ", parent)
+  prefix <- paste0(".", basename(output_root))
+  stage <- tempfile(paste0(prefix, ".stage-"), tmpdir = parent)
+  backup <- NULL
+  dir.create(stage)
+  if (!dir.exists(stage)) stop("Cannot create staging directory: ", stage)
+  on.exit({
+    if (!is.null(stage) && dir.exists(stage)) unlink(stage, recursive = TRUE)
+  }, add = TRUE)
+
+  species_order <- unique(manifest$species)
+  mappings <- vector("list", length(species_order))
+  names(mappings) <- species_order
+  for (species in species_order) {
+    rows <- manifest[manifest$species == species, , drop = FALSE]
+    mapping_path <- file.path(tx2gene_root, paste0(species, ".tsv"))
+    import_species(rows, quant_root, mapping_path, file.path(stage, species))
+    mappings[[species]] <- read.delim(
+      mapping_path, stringsAsFactors = FALSE, check.names = FALSE,
+      colClasses = "character"
+    )
+  }
+  for (species in species_order) {
+    rows <- manifest[manifest$species == species, , drop = FALSE]
+    validate_species_output(file.path(stage, species), rows, mappings[[species]])
+  }
+
+  if (file.exists(output_root) && !dir.exists(output_root)) {
+    stop("Existing output root is not a directory: ", output_root)
+  }
+  if (dir.exists(output_root)) {
+    backup <- tempfile(paste0(prefix, ".backup-"), tmpdir = parent)
+    if (!file.rename(output_root, backup)) {
+      stop("Cannot move existing collection to backup: ", output_root)
+    }
+  }
+  if (!file.rename(stage, output_root)) {
+    rollback_ok <- is.null(backup) || file.rename(backup, output_root)
+    if (!rollback_ok) {
+      stop(
+        "Collection promotion and rollback failed; previous output remains at ", backup
+      )
+    }
+    stop("Collection promotion failed; previous output was restored")
+  }
+  stage <- NULL
+  if (!is.null(backup) && dir.exists(backup)) {
+    cleanup_status <- unlink(backup, recursive = TRUE)
+    if (cleanup_status != 0L || dir.exists(backup)) {
+      stop("Collection published, but backup cleanup failed: ", backup)
+    }
+  }
+  invisible(output_root)
 }
 
 main <- function() {
@@ -117,15 +242,7 @@ main <- function() {
   }
   if (nrow(manifest) == 0L) stop("No samples selected for scope: ", scope)
 
-  for (species in unique(manifest$species)) {
-    rows <- manifest[manifest$species == species, , drop = FALSE]
-    import_species(
-      rows,
-      args[[2L]],
-      file.path(args[[3L]], paste0(species, ".tsv")),
-      file.path(args[[4L]], species)
-    )
-  }
+  publish_collection(manifest, args[[2L]], args[[3L]], args[[4L]])
 }
 
 if (sys.nframe() == 0L) main()
