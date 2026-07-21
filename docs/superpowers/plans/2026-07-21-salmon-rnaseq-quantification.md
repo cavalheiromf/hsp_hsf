@@ -30,7 +30,7 @@
 - `scripts/build_rnaseq_sample_manifest.py`: normalize the curated CSV, validate sample inputs, and select one manifest row for a Slurm array task.
 - `scripts/build_tx2gene.py`: extract complete transcript-to-gene relations from release-63 GFF3 and verify them against indexed transcript FASTA identifiers.
 - `scripts/validate_salmon_quant.py`: validate one Salmon output directory and consolidate sample QC metrics.
-- `jobs/salmon_quant.sbatch`: perform idempotent, atomic per-sample Salmon quantification.
+- `jobs/salmon_quant.sbatch`: perform idempotent, atomic per-sample Salmon quantification, serialized by an exclusive lock at `results/rnaseq/quant/.locks/<species>/<sample>.lock`; validate a partial directory while holding that lock and promote it with `mv -T --` only after validation.
 - `scripts/import_salmon_tximport.R`: create transcript- and gene-level matrices independently for each species.
 - `tests/test_build_rnaseq_sample_manifest.py`: manifest schema, canary, replicate, routing, and missing-input tests.
 - `tests/test_build_tx2gene.py`: GFF3 parsing, prefix preservation, and transcript coverage tests.
