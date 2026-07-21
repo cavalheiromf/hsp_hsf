@@ -1,6 +1,7 @@
 import csv
 import gzip
 import os
+import shutil
 import subprocess
 import tempfile
 import time
@@ -35,6 +36,7 @@ class SalmonQuantJobTest(unittest.TestCase):
             "r2": "data/fastq/SRR39669459_2.fastq.gz",
             "salmon_index": "results/rnaseq/setaria_viridis/index", "canary": "true",
         }
+        self.row = row
         with self.manifest.open("w", newline="", encoding="utf-8") as handle:
             writer = csv.DictWriter(handle, fieldnames=FIELDS, delimiter="\t")
             writer.writeheader()
@@ -47,6 +49,8 @@ class SalmonQuantJobTest(unittest.TestCase):
             "expected = ['quant', '-i', None, '-l', 'A', '-1', None, '-2', None, '--validateMappings', '--seqBias', '--gcBias', '-p', None, '-o', None]\n"
             "if len(args) != len(expected) or any(want is not None and got != want for got, want in zip(args, expected)) or not all(args[index] for index in (2, 6, 8, 13, 15)):\n"
             "    raise SystemExit('unexpected Salmon command: ' + repr(args))\n"
+            "if args[13] != os.environ.get('SLURM_CPUS_PER_TASK'):\n"
+            "    raise SystemExit('unexpected thread count: ' + repr(args[13]))\n"
             "log = os.environ.get('FAKE_SALMON_LOG')\n"
             "if log:\n"
             "    with open(log, 'a', encoding='utf-8') as handle: handle.write('invoked\\n')\n"
@@ -92,6 +96,25 @@ class SalmonQuantJobTest(unittest.TestCase):
             text=True,
             capture_output=True,
         )
+
+    def rewrite_manifest(self, **updates: str) -> None:
+        row = self.row.copy()
+        row.update(updates)
+        with self.manifest.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=FIELDS, delimiter="\t")
+            writer.writeheader()
+            writer.writerow(row)
+
+    def assert_no_quantification(self, log: Path) -> None:
+        self.assertFalse(log.exists())
+        self.assertFalse(any(self.quant_root.rglob("quant.sf")))
+
+    def restore_inputs(self) -> None:
+        shutil.rmtree(self.quant_root, ignore_errors=True)
+        for mate in (1, 2):
+            with gzip.open(self.project / f"data/fastq/SRR39669459_{mate}.fastq.gz", "wt", encoding="utf-8") as handle:
+                handle.write("@read\nACGT\n+\n!!!!\n")
+        (self.project / "results/rnaseq/setaria_viridis/index/versionInfo.json").write_text("{}\n", encoding="utf-8")
 
     def test_quantifies_and_atomically_finalizes_sample(self):
         result = self.run_job()
@@ -152,25 +175,32 @@ class SalmonQuantJobTest(unittest.TestCase):
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
-        deadline = time.monotonic() + 5
-        while not log.exists() and time.monotonic() < deadline:
-            time.sleep(0.01)
-        self.assertTrue(log.exists(), "first fake Salmon invocation did not start")
-        second = subprocess.Popen(
-            ["bash", str(REPOSITORY / "jobs/salmon_quant.sbatch")],
-            cwd=REPOSITORY,
-            env=self.job_environment(SLURM_JOB_ID="second", FAKE_SALMON_LOG=str(log)),
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        first_stdout, first_stderr = first.communicate(timeout=10)
-        second_stdout, second_stderr = second.communicate(timeout=10)
+        second = None
+        try:
+            deadline = time.monotonic() + 5
+            while not log.exists() and time.monotonic() < deadline:
+                time.sleep(0.01)
+            self.assertTrue(log.exists(), "first fake Salmon invocation did not start")
+            second = subprocess.Popen(
+                ["bash", str(REPOSITORY / "jobs/salmon_quant.sbatch")],
+                cwd=REPOSITORY,
+                env=self.job_environment(SLURM_JOB_ID="second", FAKE_SALMON_LOG=str(log)),
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            first_stdout, first_stderr = first.communicate(timeout=10)
+            second_stdout, second_stderr = second.communicate(timeout=10)
 
-        self.assertEqual(first.returncode, 0, first_stderr)
-        self.assertEqual(second.returncode, 0, second_stderr)
-        self.assertIn("already complete; skipping", second_stdout)
-        self.assertEqual(log.read_text(encoding="utf-8").splitlines(), ["invoked"])
+            self.assertEqual(first.returncode, 0, first_stderr)
+            self.assertEqual(second.returncode, 0, second_stderr)
+            self.assertIn("already complete; skipping", second_stdout)
+            self.assertEqual(log.read_text(encoding="utf-8").splitlines(), ["invoked"])
+        finally:
+            for process in (first, second):
+                if process is not None and process.poll() is None:
+                    process.terminate()
+                    process.communicate(timeout=5)
 
     def test_rejects_invalid_resource_parameters_before_salmon(self):
         for overrides in ({"MIN_FREE_GB": "-1"}, {"MIN_FREE_GB": "nope"}, {"SLURM_CPUS_PER_TASK": "0"}, {"SLURM_CPUS_PER_TASK": "nope"}):
@@ -179,6 +209,47 @@ class SalmonQuantJobTest(unittest.TestCase):
                 result = self.run_job(**overrides, FAKE_SALMON_LOG=str(log))
                 self.assertNotEqual(result.returncode, 0)
                 self.assertFalse(log.exists())
+
+    def test_rejects_malicious_path_tokens_before_writing(self):
+        for manifest_updates, environment_updates in (
+            ({"sample_id": "../../escaped"}, {}),
+            ({"species": "../../escaped"}, {}),
+            ({"sample_id": "sample id"}, {}),
+            ({}, {"SLURM_JOB_ID": "../../escaped"}),
+        ):
+            with self.subTest(manifest_updates=manifest_updates, environment_updates=environment_updates):
+                self.rewrite_manifest(**manifest_updates)
+                log = self.project / "salmon.log"
+                result = self.run_job(**environment_updates, FAKE_SALMON_LOG=str(log))
+                self.assertNotEqual(result.returncode, 0)
+                self.assert_no_quantification(log)
+                self.assertFalse((self.project / "results/rnaseq/escaped").exists())
+
+    def test_preflight_failures_never_invoke_or_promote_salmon(self):
+        cases = (
+            ("missing R1", lambda: (self.project / "data/fastq/SRR39669459_1.fastq.gz").unlink(), {}),
+            ("missing R2", lambda: (self.project / "data/fastq/SRR39669459_2.fastq.gz").unlink(), {}),
+            ("corrupt gzip", lambda: (self.project / "data/fastq/SRR39669459_1.fastq.gz").write_bytes(b"not gzip"), {}),
+            ("missing index metadata", lambda: (self.project / "results/rnaseq/setaria_viridis/index/versionInfo.json").unlink(), {}),
+            ("bad index metadata", lambda: (self.project / "results/rnaseq/setaria_viridis/index/versionInfo.json").write_text("not json\n", encoding="utf-8"), {}),
+            ("insufficient free space", lambda: None, {"MIN_FREE_GB": "1000000"}),
+        )
+        for label, prepare, overrides in cases:
+            with self.subTest(label=label):
+                self.restore_inputs()
+                prepare()
+                log = self.project / "salmon.log"
+                result = self.run_job(**overrides, FAKE_SALMON_LOG=str(log))
+                self.assertNotEqual(result.returncode, 0)
+                self.assert_no_quantification(log)
+
+    def test_rejects_resource_values_above_safe_bounds(self):
+        for overrides in ({"MIN_FREE_GB": "1000001"}, {"SLURM_CPUS_PER_TASK": "1048577"}):
+            with self.subTest(overrides=overrides):
+                log = self.project / "salmon.log"
+                result = self.run_job(**overrides, FAKE_SALMON_LOG=str(log))
+                self.assertNotEqual(result.returncode, 0)
+                self.assert_no_quantification(log)
 
 
 if __name__ == "__main__":

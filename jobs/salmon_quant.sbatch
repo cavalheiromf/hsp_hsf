@@ -18,14 +18,33 @@ MIN_FREE_GB="${MIN_FREE_GB:-5}"
 task_index="${SLURM_ARRAY_TASK_ID:?SLURM_ARRAY_TASK_ID is required}"
 threads="${SLURM_CPUS_PER_TASK:-16}"
 job_id="${SLURM_JOB_ID:-manual}"
+MAX_MIN_FREE_GB=1000000
+MAX_THREADS=1048576
 
-if [[ ! "$MIN_FREE_GB" =~ ^[0-9]+$ ]]; then
-    echo "MIN_FREE_GB must be an integer >= 0: $MIN_FREE_GB" >&2
+is_decimal_at_most() {
+    local value="$1"
+    local maximum="$2"
+    [[ "$value" =~ ^(0|[1-9][0-9]*)$ ]] || return 1
+    (( ${#value} < ${#maximum} )) && return 0
+    (( ${#value} == ${#maximum} )) && [[ "$value" < "$maximum" || "$value" == "$maximum" ]]
+}
+
+is_safe_token() {
+    local value="$1"
+    [[ "$value" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ && "$value" != "." && "$value" != ".." ]]
+}
+
+if ! is_decimal_at_most "$MIN_FREE_GB" "$MAX_MIN_FREE_GB"; then
+    echo "MIN_FREE_GB must be an integer from 0 to $MAX_MIN_FREE_GB: $MIN_FREE_GB" >&2
     exit 24
 fi
-if [[ ! "$threads" =~ ^[1-9][0-9]*$ ]]; then
-    echo "SLURM_CPUS_PER_TASK must be an integer > 0: $threads" >&2
+if [[ "$threads" == "0" ]] || ! is_decimal_at_most "$threads" "$MAX_THREADS"; then
+    echo "SLURM_CPUS_PER_TASK must be an integer from 1 to $MAX_THREADS: $threads" >&2
     exit 25
+fi
+if ! is_safe_token "$job_id"; then
+    echo "SLURM_JOB_ID must be a safe basename token: $job_id" >&2
+    exit 31
 fi
 command -v flock >/dev/null || { echo "Required command not found: flock" >&2; exit 26; }
 command -v mv >/dev/null || { echo "Required command not found: mv" >&2; exit 27; }
@@ -57,12 +76,24 @@ if (( ${#fields[@]} != 5 )) || [[ -z "${fields[0]}" || -z "${fields[1]}" || -z "
 fi
 sample="${fields[0]}"
 species="${fields[1]}"
+if ! is_safe_token "$sample" || ! is_safe_token "$species"; then
+    echo "sample_id and species must be safe basename tokens" >&2
+    exit 32
+fi
+mkdir -p -- "$QUANT_ROOT"
+QUANT_ROOT="$(cd -- "$QUANT_ROOT" && pwd -P)"
 r1="$PROJECT_DIR/${fields[2]}"
 r2="$PROJECT_DIR/${fields[3]}"
 index="$PROJECT_DIR/${fields[4]}"
 final="$QUANT_ROOT/$species/$sample"
 partial="${final}.partial.${job_id}"
 lock_file="$QUANT_ROOT/.locks/$species/$sample.lock"
+for path in "$final" "$partial" "$lock_file"; do
+    case "$path" in
+        "$QUANT_ROOT"/*) ;;
+        *) echo "Output path escapes QUANT_ROOT: $path" >&2; exit 33 ;;
+    esac
+done
 
 echo "Started: $(date --iso-8601=seconds)"
 start_epoch="$(date +%s)"
@@ -92,9 +123,18 @@ for path in "$r1" "$r2" "$index/versionInfo.json"; do
 done
 gzip -t "$r1"
 gzip -t "$r2"
+python3 -c '
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    metadata = json.load(handle)
+if not isinstance(metadata, dict):
+    raise SystemExit("Salmon index versionInfo.json must be a JSON object")
+' "$index/versionInfo.json"
 mkdir -p "$(dirname "$final")"
 free_kb="$(df -Pk "$(dirname "$final")" | awk 'NR==2 {print $4}')"
-required_kb="$((MIN_FREE_GB * 1024 * 1024))"
+required_kb="$((10#$MIN_FREE_GB * 1024 * 1024))"
 if (( free_kb < required_kb )); then
     echo "Insufficient free space: ${free_kb} KiB available, ${required_kb} KiB required" >&2
     exit 23

@@ -20,6 +20,7 @@
 - Use `tximport(..., countsFromAbundance = "no")`; retain counts, TPM, and effective lengths.
 - Build matrices independently by species; never combine features from different species into one matrix.
 - Warn below 70% mapping and block automatic release below 50% mapping.
+- Limit the Slurm job's `MIN_FREE_GB` to 1,000,000 GiB and `SLURM_CPUS_PER_TASK` to 1,048,576, rejecting non-decimal values before arithmetic or Salmon execution.
 - Stop after validated matrices; differential-expression analysis is out of scope.
 - The current workspace exposes an unusable `.git` directory. Run each listed commit after Git metadata is restored; do not replace commits with destructive repository initialization.
 
