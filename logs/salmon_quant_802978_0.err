@@ -1,0 +1,681 @@
+Loading module Bio/Salmon/1.11.4.
+Version Server Response: Not Found
+### salmon (selective-alignment-based) v1.11.4
+### [ program ] => salmon 
+### [ command ] => quant 
+### [ index ] => { /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/triticum_aestivum/index }
+### [ libType ] => { A }
+### [ mates1 ] => { /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR33083344_1.fastq.gz }
+### [ mates2 ] => { /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR33083344_2.fastq.gz }
+### [ validateMappings ] => { }
+### [ seqBias ] => { }
+### [ gcBias ] => { }
+### [ threads ] => { 16 }
+### [ output ] => { /home/mfcaval/github/hsp_hsf/results/rnaseq/quant/triticum_aestivum/SRR33083344.partial.802979 }
+Logs will be written to /home/mfcaval/github/hsp_hsf/results/rnaseq/quant/triticum_aestivum/SRR33083344.partial.802979/logs
+[2026-07-21 16:17:26.462] [jointLog] [info] setting maxHashResizeThreads to 16
+[2026-07-21 16:17:26.462] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2026-07-21 16:17:26.462] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2026-07-21 16:17:26.462] [jointLog] [info] Setting consensusSlack to selective-alignment default of 0.35.
+[2026-07-21 16:17:26.462] [jointLog] [info] parsing read library format
+[2026-07-21 16:17:26.462] [jointLog] [info] There is 1 library.
+[2026-07-21 16:17:26.463] [jointLog] [info] Loading pufferfish index
+[2026-07-21 16:17:26.464] [jointLog] [info] Loading pufferfish index.
+size = 3283786
+-----------------------------------------
+| Loading contig table | Time = 1.6393 s
+-----------------------------------------
+-----------------------------------------
+| Loading reference lengths | Time = 53.717 ms
+-----------------------------------------
+-----------------------------------------
+| Loading SSHash dictionary | Time = 816.94 ms
+-----------------------------------------
+size = 229188277
+-----------------------------------------
+| Loading reference sequence | Time = 368.77 ms
+-----------------------------------------
+-----------------------------------------
+| Loading reference accumulative lengths | Time = 74.543 ms
+-----------------------------------------
+[2026-07-21 16:17:29.492] [jointLog] [info] done
+[2026-07-21 16:17:29.522] [jointLog] [info] Index contained 146597 targets
+[2026-07-21 16:17:31.232] [jointLog] [info] Number of decoys : 0
+
+
+
+
+[2K[32mprocessed[31m 29,475 fragments[0m
+[2Khits: 43,509, hits per frag:  1.47613[1A[2K[32mprocessed[31m 73,196 fragments[0m
+[2Khits: 109,017, hits per frag:  1.48938[1A[2026-07-21 16:17:32.369] [jointLog] [info] Automatically detected most likely library type as IU
+
+[2K[32mprocessed[31m 117,435 fragments[0m
+[2Khits: 176,035, hits per frag:  1.499[1A[2K[32mprocessed[31m 163,269 fragments[0m
+[2Khits: 245,586, hits per frag:  1.50418[1A[2K[32mprocessed[31m 220,793 fragments[0m
+[2Khits: 332,670, hits per frag:  1.50671[1A[2K[32mprocessed[31m 289,769 fragments[0m
+[2Khits: 436,730, hits per frag:  1.50717[1A[2K[32mprocessed[31m 358,228 fragments[0m
+[2Khits: 540,008, hits per frag:  1.50744[1A[2K[32mprocessed[31m 428,888 fragments[0m
+[2Khits: 646,134, hits per frag:  1.50653[1A[2K[32mprocessed[31m 501,309 fragments[0m
+[2Khits: 754,216, hits per frag:  1.50449[1A[2K[32mprocessed[31m 572,310 fragments[0m
+[2Khits: 861,585, hits per frag:  1.50545[1A[2K[32mprocessed[31m 644,265 fragments[0m
+[2Khits: 972,407, hits per frag:  1.50933[1A[2K[32mprocessed[31m 714,805 fragments[0m
+[2Khits: 1,079,207, hits per frag:  1.50979[1A[2K[32mprocessed[31m 788,283 fragments[0m
+[2Khits: 1,189,186, hits per frag:  1.50858[1A[2K[32mprocessed[31m 858,789 fragments[0m
+[2Khits: 1,295,852, hits per frag:  1.50893[1A[2K[32mprocessed[31m 936,136 fragments[0m
+[2Khits: 1,411,581, hits per frag:  1.50788[1A[2K[32mprocessed[31m 1,011,748 fragments[0m
+[2Khits: 1,525,214, hits per frag:  1.5075[1A[2K[32mprocessed[31m 1,089,818 fragments[0m
+[2Khits: 1,642,680, hits per frag:  1.5073[1A[2K[32mprocessed[31m 1,167,264 fragments[0m
+[2Khits: 1,760,221, hits per frag:  1.50799[1A[2K[32mprocessed[31m 1,244,295 fragments[0m
+[2Khits: 1,876,737, hits per frag:  1.50827[1A[2K[32mprocessed[31m 1,322,193 fragments[0m
+[2Khits: 1,994,798, hits per frag:  1.5087[1A[2K[32mprocessed[31m 1,400,845 fragments[0m
+[2Khits: 2,113,609, hits per frag:  1.50881[1A[2K[32mprocessed[31m 1,481,514 fragments[0m
+[2Khits: 2,236,897, hits per frag:  1.50987[1A[2K[32mprocessed[31m 1,561,447 fragments[0m
+[2Khits: 2,358,274, hits per frag:  1.51031[1A[2K[32mprocessed[31m 1,639,928 fragments[0m
+[2Khits: 2,476,068, hits per frag:  1.50986[1A[2K[32mprocessed[31m 1,719,769 fragments[0m
+[2Khits: 2,597,711, hits per frag:  1.5105[1A[2K[32mprocessed[31m 1,802,076 fragments[0m
+[2Khits: 2,721,942, hits per frag:  1.51045[1A[2K[32mprocessed[31m 1,883,091 fragments[0m
+[2Khits: 2,844,045, hits per frag:  1.51031[1A[2K[32mprocessed[31m 1,964,203 fragments[0m
+[2Khits: 2,966,161, hits per frag:  1.51011[1A[2K[32mprocessed[31m 2,045,279 fragments[0m
+[2Khits: 3,088,336, hits per frag:  1.50998[1A[2K[32mprocessed[31m 2,126,329 fragments[0m
+[2Khits: 3,210,950, hits per frag:  1.51009[1A[2K[32mprocessed[31m 2,208,498 fragments[0m
+[2Khits: 3,335,172, hits per frag:  1.51015[1A[2K[32mprocessed[31m 2,298,827 fragments[0m
+[2Khits: 3,470,395, hits per frag:  1.50964[1A[2K[32mprocessed[31m 2,384,833 fragments[0m
+[2Khits: 3,599,743, hits per frag:  1.50943[1A[2K[32mprocessed[31m 2,470,397 fragments[0m
+[2Khits: 3,729,480, hits per frag:  1.50967[1A[2K[32mprocessed[31m 2,555,517 fragments[0m
+[2Khits: 3,858,352, hits per frag:  1.50981[1A[2K[32mprocessed[31m 2,641,872 fragments[0m
+[2Khits: 3,989,137, hits per frag:  1.50997[1A[2K[32mprocessed[31m 2,728,467 fragments[0m
+[2Khits: 4,119,910, hits per frag:  1.50997[1A[2K[32mprocessed[31m 2,820,156 fragments[0m
+[2Khits: 4,256,220, hits per frag:  1.50921[1A[2K[32mprocessed[31m 2,906,134 fragments[0m
+[2Khits: 4,386,323, hits per frag:  1.50933[1A[2K[32mprocessed[31m 2,991,371 fragments[0m
+[2Khits: 4,514,395, hits per frag:  1.50914[1A[2K[32mprocessed[31m 3,077,825 fragments[0m
+[2Khits: 4,644,323, hits per frag:  1.50896[1A[2K[32mprocessed[31m 3,165,868 fragments[0m
+[2Khits: 4,776,360, hits per frag:  1.5087[1A[2K[32mprocessed[31m 3,249,642 fragments[0m
+[2Khits: 4,903,806, hits per frag:  1.50903[1A[2K[32mprocessed[31m 3,336,177 fragments[0m
+[2Khits: 5,033,346, hits per frag:  1.50872[1A[2K[32mprocessed[31m 3,421,815 fragments[0m
+[2Khits: 5,161,892, hits per frag:  1.50852[1A[2K[32mprocessed[31m 3,507,436 fragments[0m
+[2Khits: 5,290,958, hits per frag:  1.5085[1A[2K[32mprocessed[31m 3,592,781 fragments[0m
+[2Khits: 5,418,665, hits per frag:  1.50821[1A[2K[32mprocessed[31m 3,680,565 fragments[0m
+[2Khits: 5,550,897, hits per frag:  1.50816[1A[2K[32mprocessed[31m 3,765,414 fragments[0m
+[2Khits: 5,679,756, hits per frag:  1.5084[1A[2K[32mprocessed[31m 3,849,208 fragments[0m
+[2Khits: 5,807,051, hits per frag:  1.50864[1A[2K[32mprocessed[31m 3,936,806 fragments[0m
+[2Khits: 5,937,735, hits per frag:  1.50826[1A[2K[32mprocessed[31m 4,023,443 fragments[0m
+[2Khits: 6,069,200, hits per frag:  1.50846[1A[2K[32mprocessed[31m 4,107,920 fragments[0m
+[2Khits: 6,196,887, hits per frag:  1.50852[1A[2K[32mprocessed[31m 4,193,347 fragments[0m
+[2Khits: 6,326,734, hits per frag:  1.50876[1A[2K[32mprocessed[31m 4,280,471 fragments[0m
+[2Khits: 6,457,660, hits per frag:  1.50863[1A[2K[32mprocessed[31m 4,366,204 fragments[0m
+[2Khits: 6,587,323, hits per frag:  1.50871[1A[2K[32mprocessed[31m 4,454,624 fragments[0m
+[2Khits: 6,721,144, hits per frag:  1.5088[1A[2K[32mprocessed[31m 4,542,681 fragments[0m
+[2Khits: 6,854,574, hits per frag:  1.50893[1A[2K[32mprocessed[31m 4,627,930 fragments[0m
+[2Khits: 6,982,584, hits per frag:  1.50879[1A[2K[32mprocessed[31m 4,714,165 fragments[0m
+[2Khits: 7,112,424, hits per frag:  1.50873[1A[2K[32mprocessed[31m 4,799,234 fragments[0m
+[2Khits: 7,241,721, hits per frag:  1.50893[1A[2K[32mprocessed[31m 4,884,199 fragments[0m
+[2Khits: 7,370,252, hits per frag:  1.509[1A[2K[32mprocessed[31m 4,971,309 fragments[0m
+[2Khits: 7,500,758, hits per frag:  1.50881[1A[2K[32mprocessed[31m 5,058,871 fragments[0m
+[2Khits: 7,633,185, hits per frag:  1.50887[1A[2K[32mprocessed[31m 5,145,494 fragments[0m
+[2Khits: 7,763,319, hits per frag:  1.50876[1A[2K[32mprocessed[31m 5,232,030 fragments[0m
+[2Khits: 7,894,295, hits per frag:  1.50884[1A[2K[32mprocessed[31m 5,317,597 fragments[0m
+[2Khits: 8,023,516, hits per frag:  1.50886[1A[2K[32mprocessed[31m 5,403,726 fragments[0m
+[2Khits: 8,152,711, hits per frag:  1.50872[1A[2K[32mprocessed[31m 5,491,927 fragments[0m
+[2Khits: 8,285,283, hits per frag:  1.50863[1A[2K[32mprocessed[31m 5,577,086 fragments[0m
+[2Khits: 8,414,337, hits per frag:  1.50873[1A[2K[32mprocessed[31m 5,663,007 fragments[0m
+[2Khits: 8,544,156, hits per frag:  1.50877[1A[2K[32mprocessed[31m 5,749,463 fragments[0m
+[2Khits: 8,675,009, hits per frag:  1.50884[1A[2K[32mprocessed[31m 5,837,151 fragments[0m
+[2Khits: 8,807,759, hits per frag:  1.50891[1A[2K[32mprocessed[31m 5,923,788 fragments[0m
+[2Khits: 8,938,134, hits per frag:  1.50885[1A[2K[32mprocessed[31m 6,012,694 fragments[0m
+[2Khits: 9,071,339, hits per frag:  1.5087[1A[2K[32mprocessed[31m 6,105,804 fragments[0m
+[2Khits: 9,211,694, hits per frag:  1.50868[1A[2K[32mprocessed[31m 6,194,077 fragments[0m
+[2Khits: 9,344,711, hits per frag:  1.50865[1A[2K[32mprocessed[31m 6,281,937 fragments[0m
+[2Khits: 9,477,163, hits per frag:  1.50864[1A[2K[32mprocessed[31m 6,368,490 fragments[0m
+[2Khits: 9,607,783, hits per frag:  1.50864[1A[2K[32mprocessed[31m 6,456,296 fragments[0m
+[2Khits: 9,740,287, hits per frag:  1.50865[1A[2K[32mprocessed[31m 6,544,601 fragments[0m
+[2Khits: 9,872,825, hits per frag:  1.50854[1A[2K[32mprocessed[31m 6,630,696 fragments[0m
+[2Khits: 10,003,508, hits per frag:  1.50867[1A[2K[32mprocessed[31m 6,715,360 fragments[0m
+[2Khits: 10,132,264, hits per frag:  1.50882[1A[2K[32mprocessed[31m 6,802,933 fragments[0m
+[2Khits: 10,264,165, hits per frag:  1.50879[1A[2K[32mprocessed[31m 6,890,795 fragments[0m
+[2Khits: 10,396,236, hits per frag:  1.50871[1A[2K[32mprocessed[31m 6,978,741 fragments[0m
+[2Khits: 10,528,411, hits per frag:  1.50864[1A[2K[32mprocessed[31m 7,068,471 fragments[0m
+[2Khits: 10,663,095, hits per frag:  1.50854[1A[2K[32mprocessed[31m 7,156,827 fragments[0m
+[2Khits: 10,797,118, hits per frag:  1.50865[1A[2K[32mprocessed[31m 7,244,633 fragments[0m
+[2Khits: 10,929,502, hits per frag:  1.50863[1A[2K[32mprocessed[31m 7,332,895 fragments[0m
+[2Khits: 11,061,729, hits per frag:  1.50851[1A[2K[32mprocessed[31m 7,420,574 fragments[0m
+[2Khits: 11,193,728, hits per frag:  1.50847[1A[2K[32mprocessed[31m 7,507,198 fragments[0m
+[2Khits: 11,324,523, hits per frag:  1.50849[1A[2K[32mprocessed[31m 7,594,744 fragments[0m
+[2Khits: 11,457,015, hits per frag:  1.50855[1A[2K[32mprocessed[31m 7,683,288 fragments[0m
+[2Khits: 11,590,960, hits per frag:  1.50859[1A[2K[32mprocessed[31m 7,768,401 fragments[0m
+[2Khits: 11,720,639, hits per frag:  1.50876[1A[2K[32mprocessed[31m 7,854,409 fragments[0m
+[2Khits: 11,850,503, hits per frag:  1.50877[1A[2K[32mprocessed[31m 7,941,484 fragments[0m
+[2Khits: 11,981,785, hits per frag:  1.50876[1A[2K[32mprocessed[31m 8,026,958 fragments[0m
+[2Khits: 12,110,486, hits per frag:  1.50873[1A[2K[32mprocessed[31m 8,112,375 fragments[0m
+[2Khits: 12,239,502, hits per frag:  1.50874[1A[2K[32mprocessed[31m 8,201,206 fragments[0m
+[2Khits: 12,373,947, hits per frag:  1.5088[1A[2K[32mprocessed[31m 8,287,007 fragments[0m
+[2Khits: 12,503,199, hits per frag:  1.50877[1A[2K[32mprocessed[31m 8,370,095 fragments[0m
+[2Khits: 12,628,450, hits per frag:  1.50876[1A[2K[32mprocessed[31m 8,454,487 fragments[0m
+[2Khits: 12,754,910, hits per frag:  1.50866[1A[2K[32mprocessed[31m 8,538,300 fragments[0m
+[2Khits: 12,880,710, hits per frag:  1.50858[1A[2K[32mprocessed[31m 8,624,397 fragments[0m
+[2Khits: 13,009,530, hits per frag:  1.50846[1A[2K[32mprocessed[31m 8,709,246 fragments[0m
+[2Khits: 13,137,071, hits per frag:  1.50841[1A[2K[32mprocessed[31m 8,793,894 fragments[0m
+[2Khits: 13,263,718, hits per frag:  1.50829[1A[2K[32mprocessed[31m 8,876,893 fragments[0m
+[2Khits: 13,389,757, hits per frag:  1.50838[1A[2K[32mprocessed[31m 8,960,274 fragments[0m
+[2Khits: 13,516,223, hits per frag:  1.50846[1A[2K[32mprocessed[31m 9,041,436 fragments[0m
+[2Khits: 13,639,492, hits per frag:  1.50855[1A[2K[32mprocessed[31m 9,123,215 fragments[0m
+[2Khits: 13,763,865, hits per frag:  1.50866[1A[2K[32mprocessed[31m 9,206,415 fragments[0m
+[2Khits: 13,889,170, hits per frag:  1.50864[1A[2K[32mprocessed[31m 9,289,412 fragments[0m
+[2Khits: 14,015,405, hits per frag:  1.50875[1A[2K[32mprocessed[31m 9,372,089 fragments[0m
+[2Khits: 14,140,440, hits per frag:  1.50878[1A[2K[32mprocessed[31m 9,456,032 fragments[0m
+[2Khits: 14,266,994, hits per frag:  1.50877[1A[2K[32mprocessed[31m 9,540,578 fragments[0m
+[2Khits: 14,394,152, hits per frag:  1.50873[1A[2K[32mprocessed[31m 9,625,786 fragments[0m
+[2Khits: 14,523,683, hits per frag:  1.50883[1A[2K[32mprocessed[31m 9,713,161 fragments[0m
+[2Khits: 14,655,079, hits per frag:  1.50879[1A[2K[32mprocessed[31m 9,799,842 fragments[0m
+[2Khits: 14,784,466, hits per frag:  1.50864[1A[2K[32mprocessed[31m 9,885,810 fragments[0m
+[2Khits: 14,915,183, hits per frag:  1.50875[1A[2K[32mprocessed[31m 9,969,701 fragments[0m
+[2Khits: 15,043,014, hits per frag:  1.50887[1A[2K[32mprocessed[31m 10,057,416 fragments[0m
+[2Khits: 15,174,328, hits per frag:  1.50877[1A[2K[32mprocessed[31m 10,143,542 fragments[0m
+[2Khits: 15,304,955, hits per frag:  1.50884[1A[2K[32mprocessed[31m 10,229,690 fragments[0m
+[2Khits: 15,434,920, hits per frag:  1.50884[1A[2K[32mprocessed[31m 10,315,300 fragments[0m
+[2Khits: 15,563,922, hits per frag:  1.50882[1A[2K[32mprocessed[31m 10,399,572 fragments[0m
+[2Khits: 15,692,372, hits per frag:  1.50894[1A[2K[32mprocessed[31m 10,484,318 fragments[0m
+[2Khits: 15,820,029, hits per frag:  1.50892[1A[2K[32mprocessed[31m 10,568,771 fragments[0m
+[2Khits: 15,947,600, hits per frag:  1.50894[1A[2K[32mprocessed[31m 10,655,094 fragments[0m
+[2Khits: 16,078,467, hits per frag:  1.50899[1A[2K[32mprocessed[31m 10,741,768 fragments[0m
+[2Khits: 16,210,505, hits per frag:  1.50911[1A[2K[32mprocessed[31m 10,829,150 fragments[0m
+[2Khits: 16,342,321, hits per frag:  1.5091[1A[2K[32mprocessed[31m 10,916,528 fragments[0m
+[2Khits: 16,474,206, hits per frag:  1.50911[1A[2K[32mprocessed[31m 11,005,848 fragments[0m
+[2Khits: 16,607,346, hits per frag:  1.50896[1A[2K[32mprocessed[31m 11,094,605 fragments[0m
+[2Khits: 16,740,770, hits per frag:  1.50891[1A[2K[32mprocessed[31m 11,182,633 fragments[0m
+[2Khits: 16,873,914, hits per frag:  1.50894[1A[2K[32mprocessed[31m 11,270,308 fragments[0m
+[2Khits: 17,006,982, hits per frag:  1.50901[1A[2K[32mprocessed[31m 11,355,709 fragments[0m
+[2Khits: 17,136,510, hits per frag:  1.50907[1A[2K[32mprocessed[31m 11,441,506 fragments[0m
+[2Khits: 17,266,093, hits per frag:  1.50908[1A[2K[32mprocessed[31m 11,527,376 fragments[0m
+[2Khits: 17,395,304, hits per frag:  1.50904[1A[2K[32mprocessed[31m 11,611,619 fragments[0m
+[2Khits: 17,523,138, hits per frag:  1.5091[1A[2K[32mprocessed[31m 11,694,933 fragments[0m
+[2Khits: 17,648,568, hits per frag:  1.50908[1A[2K[32mprocessed[31m 11,779,608 fragments[0m
+[2Khits: 17,775,869, hits per frag:  1.50904[1A[2K[32mprocessed[31m 11,863,046 fragments[0m
+[2Khits: 17,901,758, hits per frag:  1.50904[1A[2K[32mprocessed[31m 11,945,003 fragments[0m
+[2Khits: 18,025,897, hits per frag:  1.50907[1A[2K[32mprocessed[31m 12,027,510 fragments[0m
+[2Khits: 18,151,050, hits per frag:  1.50913[1A[2K[32mprocessed[31m 12,107,858 fragments[0m
+[2Khits: 18,273,390, hits per frag:  1.50922[1A[2K[32mprocessed[31m 12,189,898 fragments[0m
+[2Khits: 18,397,048, hits per frag:  1.5092[1A[2K[32mprocessed[31m 12,273,261 fragments[0m
+[2Khits: 18,523,257, hits per frag:  1.50924[1A[2K[32mprocessed[31m 12,353,923 fragments[0m
+[2Khits: 18,645,026, hits per frag:  1.50924[1A[2K[32mprocessed[31m 12,437,274 fragments[0m
+[2Khits: 18,769,596, hits per frag:  1.50914[1A[2K[32mprocessed[31m 12,520,230 fragments[0m
+[2Khits: 18,895,939, hits per frag:  1.50923[1A[2K[32mprocessed[31m 12,602,850 fragments[0m
+[2Khits: 19,021,416, hits per frag:  1.50929[1A[2K[32mprocessed[31m 12,685,789 fragments[0m
+[2Khits: 19,146,069, hits per frag:  1.50925[1A[2K[32mprocessed[31m 12,768,154 fragments[0m
+[2Khits: 19,270,730, hits per frag:  1.50928[1A[2K[32mprocessed[31m 12,853,831 fragments[0m
+[2Khits: 19,400,803, hits per frag:  1.50934[1A[2K[32mprocessed[31m 12,934,719 fragments[0m
+[2Khits: 19,524,700, hits per frag:  1.50948[1A[2K[32mprocessed[31m 13,018,109 fragments[0m
+[2Khits: 19,650,386, hits per frag:  1.50947[1A[2K[32mprocessed[31m 13,100,882 fragments[0m
+[2Khits: 19,775,237, hits per frag:  1.50946[1A[2K[32mprocessed[31m 13,184,521 fragments[0m
+[2Khits: 19,900,745, hits per frag:  1.5094[1A[2K[32mprocessed[31m 13,265,618 fragments[0m
+[2Khits: 20,024,645, hits per frag:  1.50951[1A[2K[32mprocessed[31m 13,349,501 fragments[0m
+[2Khits: 20,151,922, hits per frag:  1.50956[1A[2K[32mprocessed[31m 13,431,023 fragments[0m
+[2Khits: 20,275,910, hits per frag:  1.50963[1A[2K[32mprocessed[31m 13,517,984 fragments[0m
+[2Khits: 20,405,711, hits per frag:  1.50952[1A[2K[32mprocessed[31m 13,608,899 fragments[0m
+[2Khits: 20,541,899, hits per frag:  1.50945[1A[2K[32mprocessed[31m 13,694,876 fragments[0m
+[2Khits: 20,671,999, hits per frag:  1.50947[1A[2K[32mprocessed[31m 13,778,846 fragments[0m
+[2Khits: 20,799,635, hits per frag:  1.50953[1A[2K[32mprocessed[31m 13,864,105 fragments[0m
+[2Khits: 20,928,698, hits per frag:  1.50956[1A[2K[32mprocessed[31m 13,952,410 fragments[0m
+[2Khits: 21,061,033, hits per frag:  1.50949[1A[2K[32mprocessed[31m 14,036,044 fragments[0m
+[2Khits: 21,188,075, hits per frag:  1.50955[1A[2K[32mprocessed[31m 14,120,739 fragments[0m
+[2Khits: 21,315,989, hits per frag:  1.50955[1A[2K[32mprocessed[31m 14,204,418 fragments[0m
+[2Khits: 21,443,199, hits per frag:  1.50961[1A[2K[32mprocessed[31m 14,289,149 fragments[0m
+[2Khits: 21,572,001, hits per frag:  1.50968[1A[2K[32mprocessed[31m 14,371,123 fragments[0m
+[2Khits: 21,696,456, hits per frag:  1.50973[1A[2K[32mprocessed[31m 14,458,689 fragments[0m
+[2Khits: 21,829,908, hits per frag:  1.50981[1A[2K[32mprocessed[31m 14,545,703 fragments[0m
+[2Khits: 21,960,527, hits per frag:  1.50976[1A[2K[32mprocessed[31m 14,632,447 fragments[0m
+[2Khits: 22,089,513, hits per frag:  1.50963[1A[2K[32mprocessed[31m 14,714,072 fragments[0m
+[2Khits: 22,214,328, hits per frag:  1.50973[1A[2K[32mprocessed[31m 14,799,197 fragments[0m
+[2Khits: 22,343,014, hits per frag:  1.50975[1A[2K[32mprocessed[31m 14,882,390 fragments[0m
+[2Khits: 22,469,007, hits per frag:  1.50977[1A[2K[32mprocessed[31m 14,966,246 fragments[0m
+[2Khits: 22,595,567, hits per frag:  1.50977[1A[2K[32mprocessed[31m 15,050,739 fragments[0m
+[2Khits: 22,722,975, hits per frag:  1.50976[1A[2K[32mprocessed[31m 15,138,094 fragments[0m
+[2Khits: 22,854,964, hits per frag:  1.50976[1A[2K[32mprocessed[31m 15,224,610 fragments[0m
+[2Khits: 22,985,152, hits per frag:  1.50974[1A[2K[32mprocessed[31m 15,309,082 fragments[0m
+[2Khits: 23,112,316, hits per frag:  1.50971[1A[2K[32mprocessed[31m 15,396,138 fragments[0m
+[2Khits: 23,245,128, hits per frag:  1.5098[1A[2K[32mprocessed[31m 15,482,863 fragments[0m
+[2Khits: 23,375,613, hits per frag:  1.50977[1A[2K[32mprocessed[31m 15,569,693 fragments[0m
+[2Khits: 23,506,854, hits per frag:  1.50978[1A[2K[32mprocessed[31m 15,655,846 fragments[0m
+[2Khits: 23,636,196, hits per frag:  1.50974[1A[2K[32mprocessed[31m 15,740,942 fragments[0m
+[2Khits: 23,766,837, hits per frag:  1.50987[1A[2K[32mprocessed[31m 15,827,475 fragments[0m
+[2Khits: 23,897,550, hits per frag:  1.50988[1A[2K[32mprocessed[31m 15,916,660 fragments[0m
+[2Khits: 24,031,570, hits per frag:  1.50984[1A[2K[32mprocessed[31m 16,001,733 fragments[0m
+[2Khits: 24,160,063, hits per frag:  1.50984[1A[2K[32mprocessed[31m 16,076,221 fragments[0m
+[2Khits: 24,272,097, hits per frag:  1.50981[1A[2K[32mprocessed[31m 16,161,193 fragments[0m
+[2Khits: 24,400,019, hits per frag:  1.50979[1A[2K[32mprocessed[31m 16,241,694 fragments[0m
+[2Khits: 24,521,929, hits per frag:  1.50981[1A[2K[32mprocessed[31m 16,324,565 fragments[0m
+[2Khits: 24,647,325, hits per frag:  1.50983[1A[2K[32mprocessed[31m 16,404,257 fragments[0m
+[2Khits: 24,769,117, hits per frag:  1.50992[1A[2K[32mprocessed[31m 16,486,177 fragments[0m
+[2Khits: 24,892,203, hits per frag:  1.50988[1A[2K[32mprocessed[31m 16,569,713 fragments[0m
+[2Khits: 25,018,038, hits per frag:  1.50987[1A[2K[32mprocessed[31m 16,651,660 fragments[0m
+[2Khits: 25,143,005, hits per frag:  1.50994[1A[2K[32mprocessed[31m 16,735,095 fragments[0m
+[2Khits: 25,268,974, hits per frag:  1.50994[1A[2K[32mprocessed[31m 16,816,166 fragments[0m
+[2Khits: 25,392,223, hits per frag:  1.50999[1A[2K[32mprocessed[31m 16,897,639 fragments[0m
+[2Khits: 25,515,470, hits per frag:  1.51[1A[2K[32mprocessed[31m 16,979,584 fragments[0m
+[2Khits: 25,639,390, hits per frag:  1.51001[1A[2K[32mprocessed[31m 17,061,715 fragments[0m
+[2Khits: 25,763,565, hits per frag:  1.51002[1A[2K[32mprocessed[31m 17,141,988 fragments[0m
+[2Khits: 25,886,013, hits per frag:  1.51009[1A[2K[32mprocessed[31m 17,222,639 fragments[0m
+[2Khits: 26,008,617, hits per frag:  1.51014[1A[2K[32mprocessed[31m 17,303,302 fragments[0m
+[2Khits: 26,129,707, hits per frag:  1.5101[1A[2K[32mprocessed[31m 17,384,518 fragments[0m
+[2Khits: 26,252,457, hits per frag:  1.51011[1A[2K[32mprocessed[31m 17,468,268 fragments[0m
+[2Khits: 26,377,460, hits per frag:  1.51002[1A[2K[32mprocessed[31m 17,552,452 fragments[0m
+[2Khits: 26,504,163, hits per frag:  1.51[1A[2K[32mprocessed[31m 17,639,533 fragments[0m
+[2Khits: 26,633,476, hits per frag:  1.50987[1A[2K[32mprocessed[31m 17,725,354 fragments[0m
+[2Khits: 26,762,164, hits per frag:  1.50982[1A[2K[32mprocessed[31m 17,810,925 fragments[0m
+[2Khits: 26,890,314, hits per frag:  1.50977[1A[2K[32mprocessed[31m 17,891,872 fragments[0m
+[2Khits: 27,013,373, hits per frag:  1.50981[1A[2K[32mprocessed[31m 17,972,775 fragments[0m
+[2Khits: 27,135,863, hits per frag:  1.50983[1A[2K[32mprocessed[31m 18,057,418 fragments[0m
+[2Khits: 27,262,177, hits per frag:  1.50975[1A[2K[32mprocessed[31m 18,140,532 fragments[0m
+[2Khits: 27,387,514, hits per frag:  1.50974[1A[2K[32mprocessed[31m 18,221,805 fragments[0m
+[2Khits: 27,510,907, hits per frag:  1.50978[1A[2K[32mprocessed[31m 18,304,081 fragments[0m
+[2Khits: 27,634,390, hits per frag:  1.50974[1A[2K[32mprocessed[31m 18,389,550 fragments[0m
+[2Khits: 27,762,602, hits per frag:  1.50969[1A[2K[32mprocessed[31m 18,474,487 fragments[0m
+[2Khits: 27,890,159, hits per frag:  1.50966[1A[2K[32mprocessed[31m 18,560,566 fragments[0m
+[2Khits: 28,019,210, hits per frag:  1.50961[1A[2K[32mprocessed[31m 18,644,695 fragments[0m
+[2Khits: 28,146,701, hits per frag:  1.50964[1A[2K[32mprocessed[31m 18,731,387 fragments[0m
+[2Khits: 28,276,874, hits per frag:  1.5096[1A[2K[32mprocessed[31m 18,816,291 fragments[0m
+[2Khits: 28,404,327, hits per frag:  1.50956[1A[2K[32mprocessed[31m 18,904,487 fragments[0m
+[2Khits: 28,536,021, hits per frag:  1.50948[1A[2K[32mprocessed[31m 18,988,043 fragments[0m
+[2Khits: 28,661,997, hits per frag:  1.50948[1A[2K[32mprocessed[31m 19,074,523 fragments[0m
+[2Khits: 28,793,509, hits per frag:  1.50953[1A[2K[32mprocessed[31m 19,159,998 fragments[0m
+[2Khits: 28,922,220, hits per frag:  1.50951[1A[2K[32mprocessed[31m 19,246,566 fragments[0m
+[2Khits: 29,053,374, hits per frag:  1.50954[1A[2K[32mprocessed[31m 19,332,282 fragments[0m
+[2Khits: 29,182,669, hits per frag:  1.50953[1A[2K[32mprocessed[31m 19,418,230 fragments[0m
+[2Khits: 29,311,917, hits per frag:  1.50951[1A[2K[32mprocessed[31m 19,503,679 fragments[0m
+[2Khits: 29,441,216, hits per frag:  1.50952[1A[2K[32mprocessed[31m 19,590,166 fragments[0m
+[2Khits: 29,571,559, hits per frag:  1.50951[1A[2K[32mprocessed[31m 19,673,815 fragments[0m
+[2Khits: 29,698,734, hits per frag:  1.50956[1A[2K[32mprocessed[31m 19,757,349 fragments[0m
+[2Khits: 29,824,722, hits per frag:  1.50955[1A[2K[32mprocessed[31m 19,843,036 fragments[0m
+[2Khits: 29,954,177, hits per frag:  1.50956[1A[2K[32mprocessed[31m 19,927,642 fragments[0m
+[2Khits: 30,082,436, hits per frag:  1.50958[1A[2K[32mprocessed[31m 20,011,950 fragments[0m
+[2Khits: 30,210,229, hits per frag:  1.50961[1A[2K[32mprocessed[31m 20,099,233 fragments[0m
+[2Khits: 30,339,588, hits per frag:  1.50949[1A[2K[32mprocessed[31m 20,180,992 fragments[0m
+[2Khits: 30,463,726, hits per frag:  1.50953[1A[2K[32mprocessed[31m 20,265,805 fragments[0m
+[2Khits: 30,591,731, hits per frag:  1.50952[1A[2K[32mprocessed[31m 20,351,853 fragments[0m
+[2Khits: 30,722,055, hits per frag:  1.50955[1A[2K[32mprocessed[31m 20,435,320 fragments[0m
+[2Khits: 30,848,416, hits per frag:  1.50956[1A[2K[32mprocessed[31m 20,519,440 fragments[0m
+[2Khits: 30,975,811, hits per frag:  1.50958[1A[2K[32mprocessed[31m 20,608,659 fragments[0m
+[2Khits: 31,110,285, hits per frag:  1.50957[1A[2K[32mprocessed[31m 20,692,593 fragments[0m
+[2Khits: 31,237,084, hits per frag:  1.50958[1A[2K[32mprocessed[31m 20,775,087 fragments[0m
+[2Khits: 31,362,593, hits per frag:  1.50963[1A[2K[32mprocessed[31m 20,856,791 fragments[0m
+[2Khits: 31,485,835, hits per frag:  1.50962[1A[2K[32mprocessed[31m 20,940,630 fragments[0m
+[2Khits: 31,612,110, hits per frag:  1.50961[1A[2K[32mprocessed[31m 21,022,025 fragments[0m
+[2Khits: 31,735,674, hits per frag:  1.50964[1A[2K[32mprocessed[31m 21,104,146 fragments[0m
+[2Khits: 31,858,765, hits per frag:  1.5096[1A[2K[32mprocessed[31m 21,186,714 fragments[0m
+[2Khits: 31,982,877, hits per frag:  1.50957[1A[2K[32mprocessed[31m 21,268,793 fragments[0m
+[2Khits: 32,106,930, hits per frag:  1.50958[1A[2K[32mprocessed[31m 21,349,818 fragments[0m
+[2Khits: 32,228,605, hits per frag:  1.50955[1A[2K[32mprocessed[31m 21,436,245 fragments[0m
+[2Khits: 32,358,783, hits per frag:  1.50954[1A[2K[32mprocessed[31m 21,521,369 fragments[0m
+[2Khits: 32,488,315, hits per frag:  1.50958[1A[2K[32mprocessed[31m 21,604,781 fragments[0m
+[2Khits: 32,613,536, hits per frag:  1.50955[1A[2K[32mprocessed[31m 21,688,769 fragments[0m
+[2Khits: 32,740,365, hits per frag:  1.50955[1A[2K[32mprocessed[31m 21,773,076 fragments[0m
+[2Khits: 32,868,127, hits per frag:  1.50958[1A[2K[32mprocessed[31m 21,854,829 fragments[0m
+[2Khits: 32,992,759, hits per frag:  1.50963[1A[2K[32mprocessed[31m 21,938,802 fragments[0m
+[2Khits: 33,119,271, hits per frag:  1.50962[1A[2K[32mprocessed[31m 22,021,262 fragments[0m
+[2Khits: 33,243,606, hits per frag:  1.50961[1A[2K[32mprocessed[31m 22,102,957 fragments[0m
+[2Khits: 33,367,925, hits per frag:  1.50966[1A[2K[32mprocessed[31m 22,188,608 fragments[0m
+[2Khits: 33,497,087, hits per frag:  1.50965[1A[2K[32mprocessed[31m 22,275,140 fragments[0m
+[2Khits: 33,626,752, hits per frag:  1.50961[1A[2K[32mprocessed[31m 22,363,378 fragments[0m
+[2Khits: 33,759,125, hits per frag:  1.50957[1A[2K[32mprocessed[31m 22,448,606 fragments[0m
+[2Khits: 33,887,900, hits per frag:  1.50958[1A[2K[32mprocessed[31m 22,533,733 fragments[0m
+[2Khits: 34,016,769, hits per frag:  1.50959[1A[2K[32mprocessed[31m 22,619,691 fragments[0m
+[2Khits: 34,146,481, hits per frag:  1.50959[1A[2K[32mprocessed[31m 22,705,921 fragments[0m
+[2Khits: 34,278,068, hits per frag:  1.50965[1A[2K[32mprocessed[31m 22,791,168 fragments[0m
+[2Khits: 34,407,102, hits per frag:  1.50967[1A[2K[32mprocessed[31m 22,876,427 fragments[0m
+[2Khits: 34,535,817, hits per frag:  1.50967[1A[2K[32mprocessed[31m 22,960,186 fragments[0m
+[2Khits: 34,662,527, hits per frag:  1.50968[1A[2K[32mprocessed[31m 23,045,427 fragments[0m
+[2Khits: 34,790,050, hits per frag:  1.50963[1A[2K[32mprocessed[31m 23,126,513 fragments[0m
+[2Khits: 34,915,033, hits per frag:  1.50974[1A[2K[32mprocessed[31m 23,209,794 fragments[0m
+[2Khits: 35,042,898, hits per frag:  1.50983[1A[2K[32mprocessed[31m 23,295,241 fragments[0m
+[2Khits: 35,171,749, hits per frag:  1.50983[1A[2K[32mprocessed[31m 23,379,798 fragments[0m
+[2Khits: 35,299,154, hits per frag:  1.50981[1A[2K[32mprocessed[31m 23,463,360 fragments[0m
+[2Khits: 35,426,430, hits per frag:  1.50986[1A[2K[32mprocessed[31m 23,545,572 fragments[0m
+[2Khits: 35,550,218, hits per frag:  1.50985[1A[2K[32mprocessed[31m 23,626,934 fragments[0m
+[2Khits: 35,673,883, hits per frag:  1.50988[1A[2K[32mprocessed[31m 23,711,111 fragments[0m
+[2Khits: 35,801,115, hits per frag:  1.50989[1A[2K[32mprocessed[31m 23,796,008 fragments[0m
+[2Khits: 35,928,881, hits per frag:  1.50987[1A[2K[32mprocessed[31m 23,878,456 fragments[0m
+[2Khits: 36,053,462, hits per frag:  1.50987[1A[2K[32mprocessed[31m 23,961,882 fragments[0m
+[2Khits: 36,179,258, hits per frag:  1.50987[1A[2K[32mprocessed[31m 24,044,760 fragments[0m
+[2Khits: 36,304,193, hits per frag:  1.50986[1A[2K[32mprocessed[31m 24,124,777 fragments[0m
+[2Khits: 36,425,138, hits per frag:  1.50986[1A[2K[32mprocessed[31m 24,210,212 fragments[0m
+[2Khits: 36,553,945, hits per frag:  1.50986[1A[2K[32mprocessed[31m 24,294,209 fragments[0m
+[2Khits: 36,680,176, hits per frag:  1.50983[1A[2K[32mprocessed[31m 24,375,824 fragments[0m
+[2Khits: 36,804,934, hits per frag:  1.50989[1A[2K[32mprocessed[31m 24,462,395 fragments[0m
+[2Khits: 36,934,813, hits per frag:  1.50986[1A[2K[32mprocessed[31m 24,546,339 fragments[0m
+[2Khits: 37,063,054, hits per frag:  1.50992[1A[2K[32mprocessed[31m 24,632,041 fragments[0m
+[2Khits: 37,193,759, hits per frag:  1.50997[1A[2K[32mprocessed[31m 24,718,147 fragments[0m
+[2Khits: 37,323,214, hits per frag:  1.50995[1A[2K[32mprocessed[31m 24,803,267 fragments[0m
+[2Khits: 37,451,874, hits per frag:  1.50996[1A[2K[32mprocessed[31m 24,888,012 fragments[0m
+[2Khits: 37,579,581, hits per frag:  1.50995[1A[2K[32mprocessed[31m 24,972,170 fragments[0m
+[2Khits: 37,706,978, hits per frag:  1.50996[1A[2K[32mprocessed[31m 25,056,234 fragments[0m
+[2Khits: 37,834,341, hits per frag:  1.50998[1A[2K[32mprocessed[31m 25,141,120 fragments[0m
+[2Khits: 37,962,544, hits per frag:  1.50998[1A[2K[32mprocessed[31m 25,225,905 fragments[0m
+[2Khits: 38,091,218, hits per frag:  1.51[1A[2K[32mprocessed[31m 25,309,758 fragments[0m
+[2Khits: 38,218,775, hits per frag:  1.51004[1A[2K[32mprocessed[31m 25,396,157 fragments[0m
+[2Khits: 38,350,220, hits per frag:  1.51008[1A[2K[32mprocessed[31m 25,482,405 fragments[0m
+[2Khits: 38,480,541, hits per frag:  1.51008[1A[2K[32mprocessed[31m 25,569,371 fragments[0m
+[2Khits: 38,611,423, hits per frag:  1.51007[1A[2K[32mprocessed[31m 25,653,261 fragments[0m
+[2Khits: 38,738,658, hits per frag:  1.51009[1A[2K[32mprocessed[31m 25,739,682 fragments[0m
+[2Khits: 38,869,138, hits per frag:  1.51009[1A[2K[32mprocessed[31m 25,824,081 fragments[0m
+[2Khits: 38,997,714, hits per frag:  1.51013[1A[2K[32mprocessed[31m 25,907,417 fragments[0m
+[2Khits: 39,124,097, hits per frag:  1.51015[1A[2K[32mprocessed[31m 25,990,570 fragments[0m
+[2Khits: 39,250,253, hits per frag:  1.51017[1A[2K[32mprocessed[31m 26,073,676 fragments[0m
+[2Khits: 39,376,499, hits per frag:  1.5102[1A[2K[32mprocessed[31m 26,159,173 fragments[0m
+[2Khits: 39,505,806, hits per frag:  1.51021[1A[2K[32mprocessed[31m 26,243,847 fragments[0m
+[2Khits: 39,633,832, hits per frag:  1.51021[1A[2K[32mprocessed[31m 26,326,981 fragments[0m
+[2Khits: 39,759,006, hits per frag:  1.5102[1A[2K[32mprocessed[31m 26,409,220 fragments[0m
+[2Khits: 39,883,363, hits per frag:  1.51021[1A[2K[32mprocessed[31m 26,493,370 fragments[0m
+[2Khits: 40,009,434, hits per frag:  1.51017[1A[2K[32mprocessed[31m 26,575,882 fragments[0m
+[2Khits: 40,134,418, hits per frag:  1.51018[1A[2K[32mprocessed[31m 26,658,126 fragments[0m
+[2Khits: 40,259,404, hits per frag:  1.51021[1A[2K[32mprocessed[31m 26,741,296 fragments[0m
+[2Khits: 40,384,271, hits per frag:  1.51018[1A[2K[32mprocessed[31m 26,823,535 fragments[0m
+[2Khits: 40,507,586, hits per frag:  1.51015[1A[2K[32mprocessed[31m 26,907,612 fragments[0m
+[2Khits: 40,634,246, hits per frag:  1.51014[1A[2K[32mprocessed[31m 26,988,581 fragments[0m
+[2Khits: 40,756,779, hits per frag:  1.51015[1A[2K[32mprocessed[31m 27,071,465 fragments[0m
+[2Khits: 40,881,923, hits per frag:  1.51015[1A[2K[32mprocessed[31m 27,156,441 fragments[0m
+[2Khits: 41,009,841, hits per frag:  1.51013[1A[2K[32mprocessed[31m 27,243,472 fragments[0m
+[2Khits: 41,141,282, hits per frag:  1.51013[1A[2K[32mprocessed[31m 27,328,140 fragments[0m
+[2Khits: 41,269,534, hits per frag:  1.51015[1A[2K[32mprocessed[31m 27,412,500 fragments[0m
+[2Khits: 41,396,786, hits per frag:  1.51014[1A[2K[32mprocessed[31m 27,496,395 fragments[0m
+[2Khits: 41,524,526, hits per frag:  1.51018[1A[2K[32mprocessed[31m 27,579,878 fragments[0m
+[2Khits: 41,651,587, hits per frag:  1.51022[1A[2K[32mprocessed[31m 27,663,989 fragments[0m
+[2Khits: 41,779,071, hits per frag:  1.51023[1A[2K[32mprocessed[31m 27,748,295 fragments[0m
+[2Khits: 41,905,906, hits per frag:  1.51022[1A[2K[32mprocessed[31m 27,835,984 fragments[0m
+[2Khits: 42,038,281, hits per frag:  1.51021[1A[2K[32mprocessed[31m 27,920,188 fragments[0m
+[2Khits: 42,166,275, hits per frag:  1.51024[1A[2K[32mprocessed[31m 28,006,183 fragments[0m
+[2Khits: 42,296,650, hits per frag:  1.51026[1A[2K[32mprocessed[31m 28,092,533 fragments[0m
+[2Khits: 42,427,428, hits per frag:  1.51027[1A[2K[32mprocessed[31m 28,177,474 fragments[0m
+[2Khits: 42,555,899, hits per frag:  1.51028[1A[2K[32mprocessed[31m 28,262,207 fragments[0m
+[2Khits: 42,683,722, hits per frag:  1.51028[1A[2K[32mprocessed[31m 28,347,370 fragments[0m
+[2Khits: 42,812,182, hits per frag:  1.51027[1A[2K[32mprocessed[31m 28,433,273 fragments[0m
+[2Khits: 42,942,322, hits per frag:  1.51028[1A[2K[32mprocessed[31m 28,519,459 fragments[0m
+[2Khits: 43,073,630, hits per frag:  1.51032[1A[2K[32mprocessed[31m 28,604,460 fragments[0m
+[2Khits: 43,202,655, hits per frag:  1.51035[1A[2K[32mprocessed[31m 28,687,673 fragments[0m
+[2Khits: 43,328,032, hits per frag:  1.51034[1A[2K[32mprocessed[31m 28,770,484 fragments[0m
+[2Khits: 43,454,133, hits per frag:  1.51037[1A[2K[32mprocessed[31m 28,855,348 fragments[0m
+[2Khits: 43,582,381, hits per frag:  1.51037[1A[2K[32mprocessed[31m 28,944,035 fragments[0m
+[2Khits: 43,715,226, hits per frag:  1.51034[1A[2K[32mprocessed[31m 29,031,338 fragments[0m
+[2Khits: 43,845,922, hits per frag:  1.5103[1A[2K[32mprocessed[31m 29,117,784 fragments[0m
+[2Khits: 43,976,782, hits per frag:  1.51031[1A[2K[32mprocessed[31m 29,202,135 fragments[0m
+[2Khits: 44,104,078, hits per frag:  1.5103[1A[2K[32mprocessed[31m 29,287,986 fragments[0m
+[2Khits: 44,233,642, hits per frag:  1.5103[1A[2K[32mprocessed[31m 29,371,840 fragments[0m
+[2Khits: 44,360,992, hits per frag:  1.51032[1A[2K[32mprocessed[31m 29,455,434 fragments[0m
+[2Khits: 44,486,788, hits per frag:  1.51031[1A[2K[32mprocessed[31m 29,539,459 fragments[0m
+[2Khits: 44,614,045, hits per frag:  1.51032[1A[2K[32mprocessed[31m 29,621,988 fragments[0m
+[2Khits: 44,738,045, hits per frag:  1.5103[1A[2K[32mprocessed[31m 29,704,532 fragments[0m
+[2Khits: 44,863,352, hits per frag:  1.51032[1A[2K[32mprocessed[31m 29,789,130 fragments[0m
+[2Khits: 44,989,180, hits per frag:  1.51025[1A[2K[32mprocessed[31m 29,871,410 fragments[0m
+[2Khits: 45,114,542, hits per frag:  1.51029[1A[2K[32mprocessed[31m 29,955,305 fragments[0m
+[2Khits: 45,240,269, hits per frag:  1.51026[1A[2K[32mprocessed[31m 30,043,124 fragments[0m
+[2Khits: 45,371,559, hits per frag:  1.51021[1A[2K[32mprocessed[31m 30,130,975 fragments[0m
+[2Khits: 45,503,333, hits per frag:  1.51018[1A[2K[32mprocessed[31m 30,214,982 fragments[0m
+[2Khits: 45,630,220, hits per frag:  1.51019[1A[2K[32mprocessed[31m 30,297,389 fragments[0m
+[2Khits: 45,754,965, hits per frag:  1.51019[1A[2K[32mprocessed[31m 30,378,860 fragments[0m
+[2Khits: 45,879,657, hits per frag:  1.51025[1A[2K[32mprocessed[31m 30,460,924 fragments[0m
+[2Khits: 46,005,058, hits per frag:  1.5103[1A[2K[32mprocessed[31m 30,544,710 fragments[0m
+[2Khits: 46,132,332, hits per frag:  1.51032[1A[2K[32mprocessed[31m 30,629,307 fragments[0m
+[2Khits: 46,259,989, hits per frag:  1.51032[1A[2K[32mprocessed[31m 30,714,217 fragments[0m
+[2Khits: 46,387,774, hits per frag:  1.5103[1A[2K[32mprocessed[31m 30,801,235 fragments[0m
+[2Khits: 46,518,196, hits per frag:  1.51027[1A[2K[32mprocessed[31m 30,885,707 fragments[0m
+[2Khits: 46,645,911, hits per frag:  1.51027[1A[2K[32mprocessed[31m 30,972,982 fragments[0m
+[2Khits: 46,776,973, hits per frag:  1.51025[1A[2K[32mprocessed[31m 31,058,726 fragments[0m
+[2Khits: 46,906,711, hits per frag:  1.51026[1A[2K[32mprocessed[31m 31,145,383 fragments[0m
+[2Khits: 47,036,565, hits per frag:  1.51023[1A[2K[32mprocessed[31m 31,231,843 fragments[0m
+[2Khits: 47,165,809, hits per frag:  1.51018[1A[2K[32mprocessed[31m 31,314,790 fragments[0m
+[2Khits: 47,291,934, hits per frag:  1.51021[1A[2K[32mprocessed[31m 31,400,393 fragments[0m
+[2Khits: 47,420,756, hits per frag:  1.5102[1A[2K[32mprocessed[31m 31,487,396 fragments[0m
+[2Khits: 47,551,915, hits per frag:  1.51019[1A[2K[32mprocessed[31m 31,574,391 fragments[0m
+[2Khits: 47,682,628, hits per frag:  1.51017[1A[2K[32mprocessed[31m 31,659,058 fragments[0m
+[2Khits: 47,810,049, hits per frag:  1.51015[1A[2K[32mprocessed[31m 31,743,113 fragments[0m
+[2Khits: 47,936,325, hits per frag:  1.51013[1A[2K[32mprocessed[31m 31,828,499 fragments[0m
+[2Khits: 48,065,538, hits per frag:  1.51014[1A[2K[32mprocessed[31m 31,913,089 fragments[0m
+[2Khits: 48,194,079, hits per frag:  1.51017[1A[2K[32mprocessed[31m 31,997,386 fragments[0m
+[2Khits: 48,321,044, hits per frag:  1.51016[1A[2K[32mprocessed[31m 32,079,231 fragments[0m
+[2Khits: 48,445,277, hits per frag:  1.51018[1A[2K[32mprocessed[31m 32,161,141 fragments[0m
+[2Khits: 48,567,782, hits per frag:  1.51014[1A[2K[32mprocessed[31m 32,243,687 fragments[0m
+[2Khits: 48,692,371, hits per frag:  1.51014[1A[2K[32mprocessed[31m 32,328,708 fragments[0m
+[2Khits: 48,821,650, hits per frag:  1.51016[1A[2K[32mprocessed[31m 32,409,960 fragments[0m
+[2Khits: 48,944,405, hits per frag:  1.51017[1A[2K[32mprocessed[31m 32,491,292 fragments[0m
+[2Khits: 49,068,245, hits per frag:  1.5102[1A[2K[32mprocessed[31m 32,572,565 fragments[0m
+[2Khits: 49,191,911, hits per frag:  1.51023[1A[2K[32mprocessed[31m 32,655,078 fragments[0m
+[2Khits: 49,316,574, hits per frag:  1.51023[1A[2K[32mprocessed[31m 32,736,912 fragments[0m
+[2Khits: 49,441,605, hits per frag:  1.51027[1A[2K[32mprocessed[31m 32,825,261 fragments[0m
+[2Khits: 49,575,369, hits per frag:  1.51028[1A[2K[32mprocessed[31m 32,910,053 fragments[0m
+[2Khits: 49,702,561, hits per frag:  1.51025[1A[2K[32mprocessed[31m 32,992,483 fragments[0m
+[2Khits: 49,828,159, hits per frag:  1.51029[1A[2K[32mprocessed[31m 33,074,782 fragments[0m
+[2Khits: 49,953,604, hits per frag:  1.51032[1A[2K[32mprocessed[31m 33,158,257 fragments[0m
+[2Khits: 50,078,685, hits per frag:  1.51029[1A[2K[32mprocessed[31m 33,239,569 fragments[0m
+[2Khits: 50,202,075, hits per frag:  1.51031[1A[2K[32mprocessed[31m 33,323,787 fragments[0m
+[2Khits: 50,328,364, hits per frag:  1.51028[1A[2K[32mprocessed[31m 33,405,282 fragments[0m
+[2Khits: 50,451,222, hits per frag:  1.51028[1A[2K[32mprocessed[31m 33,494,540 fragments[0m
+[2Khits: 50,583,597, hits per frag:  1.5102[1A[2K[32mprocessed[31m 33,580,336 fragments[0m
+[2Khits: 50,712,687, hits per frag:  1.51019[1A[2K[32mprocessed[31m 33,666,593 fragments[0m
+[2Khits: 50,843,281, hits per frag:  1.5102[1A[2K[32mprocessed[31m 33,753,614 fragments[0m
+[2Khits: 50,973,290, hits per frag:  1.51016[1A[2K[32mprocessed[31m 33,842,403 fragments[0m
+[2Khits: 51,107,825, hits per frag:  1.51017[1A[2K[32mprocessed[31m 33,928,003 fragments[0m
+[2Khits: 51,237,533, hits per frag:  1.51018[1A[2K[32mprocessed[31m 34,012,539 fragments[0m
+[2Khits: 51,365,591, hits per frag:  1.5102[1A[2K[32mprocessed[31m 34,097,742 fragments[0m
+[2Khits: 51,495,505, hits per frag:  1.51023[1A[2K[32mprocessed[31m 34,182,631 fragments[0m
+[2Khits: 51,623,854, hits per frag:  1.51024[1A[2K[32mprocessed[31m 34,268,102 fragments[0m
+[2Khits: 51,752,868, hits per frag:  1.51023[1A[2K[32mprocessed[31m 34,356,065 fragments[0m
+[2Khits: 51,885,380, hits per frag:  1.51022[1A[2K[32mprocessed[31m 34,442,097 fragments[0m
+[2Khits: 52,014,536, hits per frag:  1.5102[1A[2K[32mprocessed[31m 34,526,561 fragments[0m
+[2Khits: 52,142,957, hits per frag:  1.51023[1A[2K[32mprocessed[31m 34,609,179 fragments[0m
+[2Khits: 52,269,668, hits per frag:  1.51028[1A[2K[32mprocessed[31m 34,693,100 fragments[0m
+[2Khits: 52,397,249, hits per frag:  1.51031[1A[2K[32mprocessed[31m 34,776,771 fragments[0m
+[2Khits: 52,522,785, hits per frag:  1.51028[1A[2K[32mprocessed[31m 34,861,461 fragments[0m
+[2Khits: 52,650,495, hits per frag:  1.51028[1A[2K[32mprocessed[31m 34,943,068 fragments[0m
+[2Khits: 52,773,034, hits per frag:  1.51026[1A[2K[32mprocessed[31m 35,025,582 fragments[0m
+[2Khits: 52,897,773, hits per frag:  1.51026[1A[2K[32mprocessed[31m 35,108,477 fragments[0m
+[2Khits: 53,022,496, hits per frag:  1.51025[1A[2K[32mprocessed[31m 35,188,467 fragments[0m
+[2Khits: 53,144,097, hits per frag:  1.51027[1A[2K[32mprocessed[31m 35,269,990 fragments[0m
+[2Khits: 53,267,641, hits per frag:  1.51028[1A[2K[32mprocessed[31m 35,353,879 fragments[0m
+[2Khits: 53,394,634, hits per frag:  1.51029[1A[2K[32mprocessed[31m 35,438,353 fragments[0m
+[2Khits: 53,523,278, hits per frag:  1.51032[1A[2K[32mprocessed[31m 35,522,820 fragments[0m
+[2Khits: 53,652,195, hits per frag:  1.51036[1A[2K[32mprocessed[31m 35,608,170 fragments[0m
+[2Khits: 53,780,542, hits per frag:  1.51034[1A[2K[32mprocessed[31m 35,692,883 fragments[0m
+[2Khits: 53,909,496, hits per frag:  1.51037[1A[2K[32mprocessed[31m 35,777,279 fragments[0m
+[2Khits: 54,036,666, hits per frag:  1.51036[1A[2K[32mprocessed[31m 35,860,143 fragments[0m
+[2Khits: 54,161,709, hits per frag:  1.51036[1A[2K[32mprocessed[31m 35,944,610 fragments[0m
+[2Khits: 54,289,235, hits per frag:  1.51036[1A[2K[32mprocessed[31m 36,030,991 fragments[0m
+[2Khits: 54,418,987, hits per frag:  1.51034[1A[2K[32mprocessed[31m 36,116,896 fragments[0m
+[2Khits: 54,549,271, hits per frag:  1.51035[1A[2K[32mprocessed[31m 36,204,701 fragments[0m
+[2Khits: 54,681,430, hits per frag:  1.51034[1A[2K[32mprocessed[31m 36,289,018 fragments[0m
+[2Khits: 54,808,993, hits per frag:  1.51035[1A[2K[32mprocessed[31m 36,374,784 fragments[0m
+[2Khits: 54,937,416, hits per frag:  1.51032[1A[2K[32mprocessed[31m 36,458,341 fragments[0m
+[2Khits: 55,063,857, hits per frag:  1.51032[1A[2K[32mprocessed[31m 36,543,095 fragments[0m
+[2Khits: 55,192,448, hits per frag:  1.51034[1A[2K[32mprocessed[31m 36,631,114 fragments[0m
+[2Khits: 55,325,948, hits per frag:  1.51035[1A[2K[32mprocessed[31m 36,717,024 fragments[0m
+[2Khits: 55,455,420, hits per frag:  1.51035[1A[2K[32mprocessed[31m 36,797,712 fragments[0m
+[2Khits: 55,578,244, hits per frag:  1.51037[1A[2K[32mprocessed[31m 36,883,010 fragments[0m
+[2Khits: 55,707,447, hits per frag:  1.51038[1A[2K[32mprocessed[31m 36,965,317 fragments[0m
+[2Khits: 55,832,640, hits per frag:  1.51041[1A[2K[32mprocessed[31m 37,052,555 fragments[0m
+[2Khits: 55,963,615, hits per frag:  1.51038[1A[2K[32mprocessed[31m 37,135,694 fragments[0m
+[2Khits: 56,088,981, hits per frag:  1.51038[1A[2K[32mprocessed[31m 37,220,583 fragments[0m
+[2Khits: 56,217,198, hits per frag:  1.51038[1A[2K[32mprocessed[31m 37,301,546 fragments[0m
+[2Khits: 56,340,467, hits per frag:  1.51041[1A[2K[32mprocessed[31m 37,383,592 fragments[0m
+[2Khits: 56,462,965, hits per frag:  1.51037[1A[2K[32mprocessed[31m 37,465,123 fragments[0m
+[2Khits: 56,587,368, hits per frag:  1.5104[1A[2K[32mprocessed[31m 37,547,914 fragments[0m
+[2Khits: 56,712,888, hits per frag:  1.51041[1A[2K[32mprocessed[31m 37,630,935 fragments[0m
+[2Khits: 56,838,034, hits per frag:  1.51041[1A[2K[32mprocessed[31m 37,711,883 fragments[0m
+[2Khits: 56,961,409, hits per frag:  1.51044[1A[2K[32mprocessed[31m 37,794,341 fragments[0m
+[2Khits: 57,086,055, hits per frag:  1.51044[1A[2K[32mprocessed[31m 37,876,876 fragments[0m
+[2Khits: 57,211,360, hits per frag:  1.51046[1A[2K[32mprocessed[31m 37,964,006 fragments[0m
+[2Khits: 57,342,548, hits per frag:  1.51045[1A[2K[32mprocessed[31m 38,049,104 fragments[0m
+[2Khits: 57,472,925, hits per frag:  1.51049[1A[2K[32mprocessed[31m 38,134,011 fragments[0m
+[2Khits: 57,603,053, hits per frag:  1.51054[1A[2K[32mprocessed[31m 38,228,963 fragments[0m
+[2Khits: 57,746,271, hits per frag:  1.51054[1A[2K[32mprocessed[31m 38,316,078 fragments[0m
+[2Khits: 57,877,489, hits per frag:  1.51053[1A[2K[32mprocessed[31m 38,402,083 fragments[0m
+[2Khits: 58,009,335, hits per frag:  1.51058[1A[2K[32mprocessed[31m 38,489,699 fragments[0m
+[2Khits: 58,142,011, hits per frag:  1.51059[1A[2K[32mprocessed[31m 38,576,551 fragments[0m
+[2Khits: 58,272,721, hits per frag:  1.51057[1A[2K[32mprocessed[31m 38,661,389 fragments[0m
+[2Khits: 58,401,430, hits per frag:  1.51059[1A[2K[32mprocessed[31m 38,752,461 fragments[0m
+[2Khits: 58,537,678, hits per frag:  1.51055[1A[2K[32mprocessed[31m 38,838,194 fragments[0m
+[2Khits: 58,666,458, hits per frag:  1.51054[1A[2K[32mprocessed[31m 38,923,370 fragments[0m
+[2Khits: 58,794,884, hits per frag:  1.51053[1A[2K[32mprocessed[31m 39,008,551 fragments[0m
+[2Khits: 58,922,983, hits per frag:  1.51051[1A[2K[32mprocessed[31m 39,092,881 fragments[0m
+[2Khits: 59,049,135, hits per frag:  1.51048[1A[2K[32mprocessed[31m 39,175,164 fragments[0m
+[2Khits: 59,173,132, hits per frag:  1.51048[1A[2K[32mprocessed[31m 39,256,602 fragments[0m
+[2Khits: 59,295,696, hits per frag:  1.51046[1A[2K[32mprocessed[31m 39,336,145 fragments[0m
+[2Khits: 59,416,723, hits per frag:  1.51049[1A[2K[32mprocessed[31m 39,414,705 fragments[0m
+[2Khits: 59,536,572, hits per frag:  1.51052[1A[2K[32mprocessed[31m 39,494,568 fragments[0m
+[2Khits: 59,657,339, hits per frag:  1.51052[1A[2K[32mprocessed[31m 39,574,195 fragments[0m
+[2Khits: 59,777,722, hits per frag:  1.51052[1A[2K[32mprocessed[31m 39,653,588 fragments[0m
+[2Khits: 59,897,972, hits per frag:  1.51053[1A[2K[32mprocessed[31m 39,737,141 fragments[0m
+[2Khits: 60,025,274, hits per frag:  1.51056[1A[2K[32mprocessed[31m 39,818,783 fragments[0m
+[2Khits: 60,147,941, hits per frag:  1.51054[1A[2K[32mprocessed[31m 39,896,938 fragments[0m
+[2Khits: 60,266,328, hits per frag:  1.51055[1A[2K[32mprocessed[31m 39,977,536 fragments[0m
+[2Khits: 60,387,604, hits per frag:  1.51054[1A[2K[32mprocessed[31m 40,058,049 fragments[0m
+[2Khits: 60,509,892, hits per frag:  1.51056[1A[2K[32mprocessed[31m 40,138,821 fragments[0m
+[2Khits: 60,630,897, hits per frag:  1.51053[1A[2K[32mprocessed[31m 40,217,613 fragments[0m
+[2Khits: 60,751,574, hits per frag:  1.51057[1A[2K[32mprocessed[31m 40,297,411 fragments[0m
+[2Khits: 60,872,055, hits per frag:  1.51057[1A[2K[32mprocessed[31m 40,376,967 fragments[0m
+[2Khits: 60,992,738, hits per frag:  1.51058[1A[2K[32mprocessed[31m 40,457,559 fragments[0m
+[2Khits: 61,115,038, hits per frag:  1.5106[1A[2K[32mprocessed[31m 40,538,040 fragments[0m
+[2Khits: 61,236,746, hits per frag:  1.5106[1A[2K[32mprocessed[31m 40,619,579 fragments[0m
+[2Khits: 61,359,184, hits per frag:  1.51058[1A[2K[32mprocessed[31m 40,698,808 fragments[0m
+[2Khits: 61,479,092, hits per frag:  1.51059[1A[2K[32mprocessed[31m 40,778,062 fragments[0m
+[2Khits: 61,600,231, hits per frag:  1.51062[1A[2K[32mprocessed[31m 40,859,300 fragments[0m
+[2Khits: 61,723,035, hits per frag:  1.51062[1A[2K[32mprocessed[31m 40,941,075 fragments[0m
+[2Khits: 61,844,524, hits per frag:  1.51057[1A[2K[32mprocessed[31m 41,023,966 fragments[0m
+[2Khits: 61,968,290, hits per frag:  1.51054[1A[2K[32mprocessed[31m 41,105,264 fragments[0m
+[2Khits: 62,091,239, hits per frag:  1.51054[1A[2K[32mprocessed[31m 41,186,528 fragments[0m
+[2Khits: 62,213,346, hits per frag:  1.51053[1A[2K[32mprocessed[31m 41,266,076 fragments[0m
+[2Khits: 62,333,635, hits per frag:  1.51053[1A[2K[32mprocessed[31m 41,345,385 fragments[0m
+[2Khits: 62,453,507, hits per frag:  1.51053[1A[2K[32mprocessed[31m 41,426,564 fragments[0m
+[2Khits: 62,576,053, hits per frag:  1.51053[1A[2K[32mprocessed[31m 41,509,228 fragments[0m
+[2Khits: 62,699,256, hits per frag:  1.51049[1A[2K[32mprocessed[31m 41,592,046 fragments[0m
+[2Khits: 62,823,296, hits per frag:  1.51046[1A[2K[32mprocessed[31m 41,674,682 fragments[0m
+[2Khits: 62,947,822, hits per frag:  1.51046[1A[2K[32mprocessed[31m 41,758,157 fragments[0m
+[2Khits: 63,071,738, hits per frag:  1.51041[1A[2K[32mprocessed[31m 41,839,663 fragments[0m
+[2Khits: 63,194,526, hits per frag:  1.5104[1A[2K[32mprocessed[31m 41,920,022 fragments[0m
+[2Khits: 63,315,771, hits per frag:  1.51039[1A[2K[32mprocessed[31m 41,999,434 fragments[0m
+[2Khits: 63,434,961, hits per frag:  1.51038[1A[2K[32mprocessed[31m 42,079,619 fragments[0m
+[2Khits: 63,556,225, hits per frag:  1.51038[1A[2K[32mprocessed[31m 42,162,253 fragments[0m
+[2Khits: 63,679,963, hits per frag:  1.51035[1A[2K[32mprocessed[31m 42,242,592 fragments[0m
+[2Khits: 63,801,160, hits per frag:  1.51035[1A[2K[32mprocessed[31m 42,325,700 fragments[0m
+[2Khits: 63,926,048, hits per frag:  1.51034[1A[2K[32mprocessed[31m 42,407,755 fragments[0m
+[2Khits: 64,049,005, hits per frag:  1.51031[1A[2K[32mprocessed[31m 42,489,120 fragments[0m
+[2Khits: 64,171,820, hits per frag:  1.51031[1A[2K[32mprocessed[31m 42,568,761 fragments[0m
+[2Khits: 64,291,873, hits per frag:  1.51031[1A[2K[32mprocessed[31m 42,649,815 fragments[0m
+[2Khits: 64,413,872, hits per frag:  1.5103[1A[2K[32mprocessed[31m 42,733,668 fragments[0m
+[2Khits: 64,539,327, hits per frag:  1.51027[1A[2K[32mprocessed[31m 42,815,211 fragments[0m
+[2Khits: 64,661,657, hits per frag:  1.51025[1A[2K[32mprocessed[31m 42,896,461 fragments[0m
+[2Khits: 64,784,582, hits per frag:  1.51025[1A[2K[32mprocessed[31m 42,977,594 fragments[0m
+[2Khits: 64,905,528, hits per frag:  1.51022[1A[2K[32mprocessed[31m 43,059,632 fragments[0m
+[2Khits: 65,029,660, hits per frag:  1.51022[1A[2K[32mprocessed[31m 43,141,009 fragments[0m
+[2Khits: 65,153,195, hits per frag:  1.51024[1A[2K[32mprocessed[31m 43,223,704 fragments[0m
+[2Khits: 65,276,502, hits per frag:  1.5102[1A[2K[32mprocessed[31m 43,302,487 fragments[0m
+[2Khits: 65,396,042, hits per frag:  1.51021[1A[2K[32mprocessed[31m 43,383,610 fragments[0m
+[2Khits: 65,517,901, hits per frag:  1.5102[1A[2K[32mprocessed[31m 43,462,457 fragments[0m
+[2Khits: 65,637,248, hits per frag:  1.51021[1A[2K[32mprocessed[31m 43,546,750 fragments[0m
+[2Khits: 65,763,076, hits per frag:  1.51017[1A[2K[32mprocessed[31m 43,626,925 fragments[0m
+[2Khits: 65,884,752, hits per frag:  1.51019[1A[2K[32mprocessed[31m 43,710,272 fragments[0m
+[2Khits: 66,011,009, hits per frag:  1.51019[1A[2K[32mprocessed[31m 43,797,694 fragments[0m
+[2Khits: 66,142,363, hits per frag:  1.51018[1A[2K[32mprocessed[31m 43,882,236 fragments[0m
+[2Khits: 66,269,674, hits per frag:  1.51017[1A[2K[32mprocessed[31m 43,966,369 fragments[0m
+[2Khits: 66,395,723, hits per frag:  1.51015[1A[2K[32mprocessed[31m 44,048,993 fragments[0m
+[2Khits: 66,520,899, hits per frag:  1.51016[1A[2K[32mprocessed[31m 44,131,544 fragments[0m
+[2Khits: 66,645,212, hits per frag:  1.51015[1A[2K[32mprocessed[31m 44,212,385 fragments[0m
+[2Khits: 66,766,519, hits per frag:  1.51013[1A[2K[32mprocessed[31m 44,294,512 fragments[0m
+[2Khits: 66,891,359, hits per frag:  1.51015[1A[2K[32mprocessed[31m 44,375,078 fragments[0m
+[2Khits: 67,013,587, hits per frag:  1.51016[1A[2K[32mprocessed[31m 44,457,091 fragments[0m
+[2Khits: 67,137,421, hits per frag:  1.51016[1A[2K[32mprocessed[31m 44,536,108 fragments[0m
+[2Khits: 67,256,613, hits per frag:  1.51016[1A[2K[32mprocessed[31m 44,616,726 fragments[0m
+[2Khits: 67,377,877, hits per frag:  1.51015[1A[2K[32mprocessed[31m 44,696,737 fragments[0m
+[2Khits: 67,498,909, hits per frag:  1.51015[1A[2K[32mprocessed[31m 44,778,109 fragments[0m
+[2Khits: 67,621,296, hits per frag:  1.51014[1A[2K[32mprocessed[31m 44,856,875 fragments[0m
+[2Khits: 67,741,124, hits per frag:  1.51016[1A[2K[32mprocessed[31m 44,936,557 fragments[0m
+[2Khits: 67,861,628, hits per frag:  1.51017[1A[2K[32mprocessed[31m 45,015,445 fragments[0m
+[2Khits: 67,981,078, hits per frag:  1.51017[1A[2K[32mprocessed[31m 45,095,378 fragments[0m
+[2Khits: 68,100,971, hits per frag:  1.51015[1A[2K[32mprocessed[31m 45,173,714 fragments[0m
+[2Khits: 68,219,056, hits per frag:  1.51015[1A[2K[32mprocessed[31m 45,253,116 fragments[0m
+[2Khits: 68,340,187, hits per frag:  1.51018[1A[2K[32mprocessed[31m 45,333,721 fragments[0m
+[2Khits: 68,462,199, hits per frag:  1.51018[1A[2K[32mprocessed[31m 45,413,824 fragments[0m
+[2Khits: 68,583,776, hits per frag:  1.5102[1A[2K[32mprocessed[31m 45,493,835 fragments[0m
+[2Khits: 68,704,701, hits per frag:  1.5102[1A[2K[32mprocessed[31m 45,575,292 fragments[0m
+[2Khits: 68,827,366, hits per frag:  1.51019[1A[2K[32mprocessed[31m 45,655,404 fragments[0m
+[2Khits: 68,949,156, hits per frag:  1.51021[1A[2K[32mprocessed[31m 45,735,777 fragments[0m
+[2Khits: 69,069,812, hits per frag:  1.51019[1A[2K[32mprocessed[31m 45,817,413 fragments[0m
+[2Khits: 69,192,396, hits per frag:  1.51018[1A[2K[32mprocessed[31m 45,895,645 fragments[0m
+[2Khits: 69,311,722, hits per frag:  1.5102[1A[2K[32mprocessed[31m 45,976,192 fragments[0m
+[2Khits: 69,432,097, hits per frag:  1.51018[1A[2K[32mprocessed[31m 46,057,439 fragments[0m
+[2Khits: 69,555,364, hits per frag:  1.51019[1A[2K[32mprocessed[31m 46,143,122 fragments[0m
+[2Khits: 69,684,363, hits per frag:  1.51018[1A[2K[32mprocessed[31m 46,225,033 fragments[0m
+[2Khits: 69,807,156, hits per frag:  1.51016[1A[2K[32mprocessed[31m 46,308,726 fragments[0m
+[2Khits: 69,932,602, hits per frag:  1.51014[1A[2K[32mprocessed[31m 46,388,615 fragments[0m
+[2Khits: 70,054,086, hits per frag:  1.51016[1A[2K[32mprocessed[31m 46,466,577 fragments[0m
+[2Khits: 70,172,694, hits per frag:  1.51018[1A[2K[32mprocessed[31m 46,546,673 fragments[0m
+[2Khits: 70,293,615, hits per frag:  1.51017[1A[2K[32mprocessed[31m 46,628,720 fragments[0m
+[2Khits: 70,418,071, hits per frag:  1.51019[1A[2K[32mprocessed[31m 46,709,578 fragments[0m
+[2Khits: 70,539,080, hits per frag:  1.51016[1A[2K[32mprocessed[31m 46,791,224 fragments[0m
+[2Khits: 70,660,434, hits per frag:  1.51012[1A[2K[32mprocessed[31m 46,871,783 fragments[0m
+[2Khits: 70,782,138, hits per frag:  1.51012[1A[2K[32mprocessed[31m 46,952,147 fragments[0m
+[2Khits: 70,902,957, hits per frag:  1.51011[1A[2K[32mprocessed[31m 47,032,027 fragments[0m
+[2Khits: 71,024,209, hits per frag:  1.51012[1A[2K[32mprocessed[31m 47,114,137 fragments[0m
+[2Khits: 71,146,837, hits per frag:  1.5101[1A[2K[32mprocessed[31m 47,195,994 fragments[0m
+[2Khits: 71,270,002, hits per frag:  1.51009[1A[2K[32mprocessed[31m 47,275,665 fragments[0m
+[2Khits: 71,391,205, hits per frag:  1.5101[1A[2K[32mprocessed[31m 47,355,053 fragments[0m
+[2Khits: 71,511,526, hits per frag:  1.51011[1A[2K[32mprocessed[31m 47,434,088 fragments[0m
+[2Khits: 71,630,735, hits per frag:  1.51011[1A[2K[32mprocessed[31m 47,514,625 fragments[0m
+[2Khits: 71,751,703, hits per frag:  1.5101[1A[2K[32mprocessed[31m 47,596,605 fragments[0m
+[2Khits: 71,874,685, hits per frag:  1.51008[1A[2K[32mprocessed[31m 47,678,557 fragments[0m
+[2Khits: 71,997,416, hits per frag:  1.51006[1A[2K[32mprocessed[31m 47,758,493 fragments[0m
+[2Khits: 72,119,619, hits per frag:  1.51009[1A[2K[32mprocessed[31m 47,837,718 fragments[0m
+[2Khits: 72,240,367, hits per frag:  1.51011[1A[2K[32mprocessed[31m 47,916,970 fragments[0m
+[2Khits: 72,360,645, hits per frag:  1.51013[1A[2K[32mprocessed[31m 47,997,513 fragments[0m
+[2Khits: 72,482,085, hits per frag:  1.51012[1A[2K[32mprocessed[31m 48,077,721 fragments[0m
+[2Khits: 72,603,057, hits per frag:  1.51012[1A[2K[32mprocessed[31m 48,162,851 fragments[0m
+[2Khits: 72,730,586, hits per frag:  1.5101[1A[2K[32mprocessed[31m 48,241,745 fragments[0m
+[2Khits: 72,850,042, hits per frag:  1.5101[1A[2K[32mprocessed[31m 48,320,993 fragments[0m
+[2Khits: 72,971,182, hits per frag:  1.51013[1A[2K[32mprocessed[31m 48,404,031 fragments[0m
+[2Khits: 73,095,083, hits per frag:  1.5101[1A[2K[32mprocessed[31m 48,482,540 fragments[0m
+[2Khits: 73,214,475, hits per frag:  1.51012[1A[2K[32mprocessed[31m 48,563,127 fragments[0m
+[2Khits: 73,336,062, hits per frag:  1.51012[1A[2K[32mprocessed[31m 48,651,639 fragments[0m
+[2Khits: 73,468,173, hits per frag:  1.51009[1A[2K[32mprocessed[31m 48,740,951 fragments[0m
+[2Khits: 73,601,760, hits per frag:  1.51006[1A[2K[32mprocessed[31m 48,828,464 fragments[0m
+[2Khits: 73,734,996, hits per frag:  1.51008[1A[2K[32mprocessed[31m 48,916,002 fragments[0m
+[2Khits: 73,867,814, hits per frag:  1.5101[1A[2K[32mprocessed[31m 49,001,108 fragments[0m
+[2Khits: 73,995,394, hits per frag:  1.51008[1A[2K[32mprocessed[31m 49,055,624 fragments[0m
+[2Khits: 74,077,166, hits per frag:  1.51006[1A[2026-07-21 16:22:27.476] [jointLog] [info] Computed 347,485 rich equivalence classes for further processing
+[2026-07-21 16:22:27.476] [jointLog] [info] Counted 41,118,689 total reads in the equivalence classes 
+
+
+
+
+
+
+
+
+[2026-07-21 16:22:27.486] [jointLog] [info] Number of mappings discarded because of alignment score : 17,521,999
+[2026-07-21 16:22:27.486] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 3,881,775
+[2026-07-21 16:22:27.486] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 0
+[2026-07-21 16:22:27.486] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 1,538,429
+[2026-07-21 16:22:27.486] [jointLog] [info] Mapping rate = 83.8205%
+[2026-07-21 16:22:27.486] [jointLog] [info] finished quantifyLibrary()
+[2026-07-21 16:22:27.501] [jointLog] [info] Starting optimizer
+[2026-07-21 16:22:27.590] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2026-07-21 16:22:27.609] [jointLog] [info] iteration = 0 | max rel diff. = 4954.665008689429
+[2026-07-21 16:22:27.811] [jointLog] [info] iteration 11, adjusting effective lengths to account for biases
+[2026-07-21 16:22:45.861] [jointLog] [info] Computed expected counts (for bias correction)
+[2026-07-21 16:22:45.862] [jointLog] [info] processed bias for 0.0% of the transcripts
+[2026-07-21 16:22:47.469] [jointLog] [info] processed bias for 10.0% of the transcripts
+[2026-07-21 16:22:49.060] [jointLog] [info] processed bias for 20.2% of the transcripts
+[2026-07-21 16:22:50.721] [jointLog] [info] processed bias for 30.0% of the transcripts
+[2026-07-21 16:22:52.425] [jointLog] [info] processed bias for 40.1% of the transcripts
+[2026-07-21 16:22:54.135] [jointLog] [info] processed bias for 50.0% of the transcripts
+[2026-07-21 16:22:55.867] [jointLog] [info] processed bias for 60.0% of the transcripts
+[2026-07-21 16:22:57.531] [jointLog] [info] processed bias for 70.0% of the transcripts
+[2026-07-21 16:22:58.621] [jointLog] [info] processed bias for 80.0% of the transcripts
+[2026-07-21 16:23:00.172] [jointLog] [info] processed bias for 90.0% of the transcripts
+[2026-07-21 16:23:01.904] [jointLog] [info] processed bias for 100.0% of the transcripts
+[2026-07-21 16:23:01.907] [jointLog] [info] processed bias for 100.0% of the transcripts
+[2026-07-21 16:23:03.250] [jointLog] [info] iteration = 100 | max rel diff. = 20.0624943754097
+[2026-07-21 16:23:04.754] [jointLog] [info] iteration = 200 | max rel diff. = 6.66765900677992
+[2026-07-21 16:23:06.267] [jointLog] [info] iteration = 300 | max rel diff. = 1.1026795238620575
+[2026-07-21 16:23:07.774] [jointLog] [info] iteration = 400 | max rel diff. = 0.23969713755642236
+[2026-07-21 16:23:09.276] [jointLog] [info] iteration = 500 | max rel diff. = 1.4286648578338597
+[2026-07-21 16:23:10.770] [jointLog] [info] iteration = 600 | max rel diff. = 0.07254575707380798
+[2026-07-21 16:23:12.094] [jointLog] [info] iteration = 690 | max rel diff. = 0.007698242192208682
+[2026-07-21 16:23:12.098] [jointLog] [info] Finished optimizer
+[2026-07-21 16:23:12.098] [jointLog] [info] writing output 
+

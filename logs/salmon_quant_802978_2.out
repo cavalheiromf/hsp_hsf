@@ -1,0 +1,8 @@
+Started: 2026-07-21T16:15:49-03:00
+Sample: SRR14935704
+Species: sorghum_bicolor
+Scope: canary
+Index: /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/sorghum_bicolor/index
+Command: /home/program2/bin/Salmon/1.11.4/bin/salmon quant -i /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/sorghum_bicolor/index -l A -1 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR14935704_1.fastq.gz -2 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR14935704_2.fastq.gz --validateMappings --seqBias --gcBias -p 16 -o /home/mfcaval/github/hsp_hsf/results/rnaseq/quant/sorghum_bicolor/SRR14935704.partial.802981
+{"compatible_fragment_ratio": 1.0, "elapsed_seconds": 85, "expected_format": "ISR", "index_name_hash": "ee5308d26779839463a930e120696c19dda5b891f85ffd02d8eef9f382b12b78", "index_seq_hash": "97c880db355099c981b25adbb3d6e93a420c2943b08438e1280eeb08dd5e7396", "library_types": "ISR", "mapping_flag": "pass", "num_mapped": 8730463, "num_processed": 10321987, "percent_mapped": 84.58122452585923, "salmon_version": "1.11.4", "status": "pass"}
+Completed: 2026-07-21T16:17:14-03:00

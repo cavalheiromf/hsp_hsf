@@ -1,0 +1,2 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR33083344	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2+drought_biol_rep1	1	paired	data/fastq/SRR33083344_1.fastq.gz	data/fastq/SRR33083344_2.fastq.gz	results/rnaseq/triticum_aestivum/index	true

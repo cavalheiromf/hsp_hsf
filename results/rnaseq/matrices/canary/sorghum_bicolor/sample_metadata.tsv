@@ -1,0 +1,2 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR14935704	sorghum_bicolor	PRJNA742236	Green prop roots	Ambient CO2, drought, rep2	2	paired	data/fastq/SRR14935704_1.fastq.gz	data/fastq/SRR14935704_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	true

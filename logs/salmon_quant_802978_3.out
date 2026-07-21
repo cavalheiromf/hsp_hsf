@@ -1,0 +1,8 @@
+Started: 2026-07-21T16:17:17-03:00
+Sample: SRR39669459
+Species: setaria_viridis
+Scope: canary
+Index: /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/setaria_viridis/index
+Command: /home/program2/bin/Salmon/1.11.4/bin/salmon quant -i /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/setaria_viridis/index -l A -1 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR39669459_1.fastq.gz -2 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR39669459_2.fastq.gz --validateMappings --seqBias --gcBias -p 16 -o /home/mfcaval/github/hsp_hsf/results/rnaseq/quant/setaria_viridis/SRR39669459.partial.802978
+{"compatible_fragment_ratio": 1.0, "elapsed_seconds": 343, "expected_format": "ISR", "index_name_hash": "5f887f7e5d46539ba197b1b59f1f8f7592ffb0347d89706e08becb7381cf95cf", "index_seq_hash": "2e9d8f852d0493b4538da444ecbec23f0156f3723f3a4130a8b663eb7d269a93", "library_types": "ISR", "mapping_flag": "pass", "num_mapped": 35635145, "num_processed": 47191075, "percent_mapped": 75.51246713494024, "salmon_version": "1.11.4", "status": "pass"}
+Completed: 2026-07-21T16:23:00-03:00

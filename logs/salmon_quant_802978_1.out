@@ -1,0 +1,8 @@
+Started: 2026-07-21T16:12:06-03:00
+Sample: SRR26553587
+Species: glycine_max
+Scope: canary
+Index: /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/glycine_max/index
+Command: /home/program2/bin/Salmon/1.11.4/bin/salmon quant -i /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/results/rnaseq/glycine_max/index -l A -1 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR26553587_1.fastq.gz -2 /home/mfcaval/github/hsp_hsf/.worktrees/salmon-quantification/data/fastq/SRR26553587_2.fastq.gz --validateMappings --seqBias --gcBias -p 16 -o /home/mfcaval/github/hsp_hsf/results/rnaseq/quant/glycine_max/SRR26553587.partial.802980
+{"compatible_fragment_ratio": 1.0, "elapsed_seconds": 219, "expected_format": "IU", "index_name_hash": "bae147217c4246b3ff795951886be76b635d3a4d9dc8e3a8a16c15a2c65a6101", "index_seq_hash": "e38ad5315ba3ab181de6740efa6c4e6ccd077e65183ddd356df4922ce29611ba", "library_types": "IU", "mapping_flag": "pass", "num_mapped": 16754671, "num_processed": 20736451, "percent_mapped": 80.79816068815248, "salmon_version": "1.11.4", "status": "pass"}
+Completed: 2026-07-21T16:15:45-03:00

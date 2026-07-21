@@ -1,0 +1,2 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR39669459	setaria_viridis	PRJNA1496374	Root	ambient CO2, control well-watered, biological replicate 2	2	paired	data/fastq/SRR39669459_1.fastq.gz	data/fastq/SRR39669459_2.fastq.gz	results/rnaseq/setaria_viridis/index	true
