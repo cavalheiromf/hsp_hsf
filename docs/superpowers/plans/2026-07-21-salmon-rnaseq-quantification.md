@@ -575,7 +575,7 @@ def write_quant(root: Path, percent_mapped: float = 75.0) -> None:
         "num_processed": 100, "num_mapped": int(percent_mapped),
         "percent_mapped": percent_mapped, "library_types": ["IU"],
     }), encoding="utf-8")
-    (root / "lib_format_counts.json").write_text(json.dumps({"expected_format": "IU"}), encoding="utf-8")
+    (root / "lib_format_counts.json").write_text(json.dumps({"expected_format": "IU", "compatible_fragment_ratio": 0.98}), encoding="utf-8")
     (root / "run_metrics.json").write_text(json.dumps({"elapsed_seconds": 12}), encoding="utf-8")
 
 
@@ -638,7 +638,7 @@ from pathlib import Path
 QC_FIELDS = [
     "sample_id", "species", "status", "mapping_flag", "num_processed", "num_mapped",
     "percent_mapped", "library_types", "salmon_version", "index_seq_hash", "index_name_hash",
-    "elapsed_seconds",
+    "expected_format", "compatible_fragment_ratio", "elapsed_seconds",
 ]
 
 
@@ -660,7 +660,7 @@ def validate_quant(directory: Path) -> dict[str, str | int | float]:
     if header != ["Name", "Length", "EffectiveLength", "TPM", "NumReads"] or not first:
         raise ValueError(f"Malformed quant.sf: {quant}")
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
-    json.loads(lib_path.read_text(encoding="utf-8"))
+    lib = json.loads(lib_path.read_text(encoding="utf-8"))
     run = json.loads(run_path.read_text(encoding="utf-8"))
     required = ("num_processed", "num_mapped", "percent_mapped", "salmon_version")
     missing = [key for key in required if key not in meta]
@@ -683,6 +683,8 @@ def validate_quant(directory: Path) -> dict[str, str | int | float]:
         "salmon_version": str(meta["salmon_version"]),
         "index_seq_hash": str(meta.get("index_seq_hash", "")),
         "index_name_hash": str(meta.get("index_name_hash", "")),
+        "expected_format": str(lib["expected_format"]),
+        "compatible_fragment_ratio": float(lib["compatible_fragment_ratio"]),
         "elapsed_seconds": int(run["elapsed_seconds"]),
     }
 
@@ -810,7 +812,7 @@ class SalmonQuantJobTest(unittest.TestCase):
             "(out / 'aux_info').mkdir(parents=True)\n"
             "(out / 'quant.sf').write_text('Name\\tLength\\tEffectiveLength\\tTPM\\tNumReads\\ntranscript:t1\\t100\\t80\\t1000000\\t80\\n')\n"
             "(out / 'aux_info/meta_info.json').write_text(json.dumps({'salmon_version':'1.11.4','index_seq_hash':'seq','index_name_hash':'name','num_processed':100,'num_mapped':80,'percent_mapped':80.0,'library_types':['IU']}))\n"
-            "(out / 'lib_format_counts.json').write_text(json.dumps({'expected_format':'IU'}))\n",
+            "(out / 'lib_format_counts.json').write_text(json.dumps({'expected_format':'IU','compatible_fragment_ratio':0.98}))\n",
             encoding="utf-8",
         )
         self.fake_salmon.chmod(0o755)
