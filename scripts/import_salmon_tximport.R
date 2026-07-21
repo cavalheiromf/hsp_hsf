@@ -5,6 +5,27 @@ write_matrix <- function(matrix, path) {
   write.table(output, path, sep = "\t", quote = FALSE, row.names = FALSE)
 }
 
+read_metadata_tsv <- function(path) {
+  read.delim(
+    path, stringsAsFactors = FALSE, check.names = FALSE,
+    colClasses = "character", na.strings = character(), quote = ""
+  )
+}
+
+validate_metadata_values <- function(sample_rows) {
+  character_columns <- lapply(sample_rows, as.character)
+  if (any(vapply(character_columns, anyNA, logical(1)))) {
+    stop("sample metadata contains missing metadata values; use an empty string when intentional")
+  }
+  unsafe <- vapply(
+    character_columns,
+    function(values) any(grepl("[\t\r\n]", values, perl = TRUE)),
+    logical(1)
+  )
+  if (any(unsafe)) stop("sample metadata values may not contain tabs or newlines")
+  invisible(TRUE)
+}
+
 read_output_matrix <- function(path, expected_features, expected_samples, positive = FALSE) {
   table <- read.delim(path, stringsAsFactors = FALSE, check.names = FALSE)
   expected_columns <- c("feature_id", expected_samples)
@@ -42,7 +63,7 @@ validate_species_output <- function(output_dir, sample_rows, tx2gene) {
   read_output_matrix(paths[[4L]], genes, samples)
   read_output_matrix(paths[[5L]], genes, samples, positive = TRUE)
 
-  metadata <- read.delim(paths[[6L]], stringsAsFactors = FALSE, check.names = FALSE)
+  metadata <- read_metadata_tsv(paths[[6L]])
   if (!identical(names(metadata), names(sample_rows)) || nrow(metadata) != nrow(sample_rows)) {
     stop("Staged sample metadata shape is not aligned: ", paths[[6L]])
   }
@@ -68,6 +89,7 @@ import_species <- function(sample_rows, quant_root, tx2gene_path, output_dir) {
   }
   require_columns(sample_rows, c("sample_id", "species"), "sample metadata")
   if (nrow(sample_rows) == 0L) stop("sample metadata must contain at least one row")
+  validate_metadata_values(sample_rows)
   if (anyNA(sample_rows$sample_id) || any(!nzchar(sample_rows$sample_id))) {
     stop("sample_id values must be non-empty")
   }
@@ -233,7 +255,7 @@ main <- function() {
       "MANIFEST QUANT_ROOT TX2GENE_ROOT OUTPUT_ROOT SCOPE"
     )
   }
-  manifest <- read.delim(args[[1L]], stringsAsFactors = FALSE, check.names = FALSE)
+  manifest <- read_metadata_tsv(args[[1L]])
   require_columns(manifest, c("sample_id", "species", "canary"), "manifest")
   scope <- args[[5L]]
   if (!scope %in% c("canary", "all")) stop("Scope must be canary or all")

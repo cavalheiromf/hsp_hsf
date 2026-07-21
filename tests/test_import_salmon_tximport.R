@@ -13,6 +13,7 @@ sample_rows <- data.frame(
   sample_id = c("setaria_c", "setaria_n", "soy_c", "soy_n"),
   species = rep(species_names, each = 2L),
   canary = rep(c("true", "false"), 2L),
+  tissue = c("leaf", "leaf", "", "NA"),
   condition = c("control", "stress", "control", "stress"),
   stringsAsFactors = FALSE
 )
@@ -102,16 +103,44 @@ metadata <- read.delim(file.path(direct_output, "sample_metadata.tsv"), check.na
 stopifnot(identical(metadata$sample_id, c("setaria_c", "setaria_n")))
 stopifnot(identical(colnames(result$transcript$counts), metadata$sample_id))
 
+missing_metadata <- setaria_rows
+missing_metadata$tissue[1] <- NA_character_
+missing_error <- tryCatch(
+  import_species(
+    missing_metadata, quant_root,
+    file.path(tx2gene_root, "setaria_viridis.tsv"), file.path(root, "missing-metadata")
+  ),
+  error = identity
+)
+stopifnot(inherits(missing_error, "error"))
+stopifnot(grepl("missing metadata", conditionMessage(missing_error), fixed = TRUE))
+
+tabbed_metadata <- setaria_rows
+tabbed_metadata$tissue[1] <- "leaf\tblade"
+tabbed_error <- tryCatch(
+  import_species(
+    tabbed_metadata, quant_root,
+    file.path(tx2gene_root, "setaria_viridis.tsv"), file.path(root, "tabbed-metadata")
+  ),
+  error = identity
+)
+stopifnot(inherits(tabbed_error, "error"))
+stopifnot(grepl("tabs or newlines", conditionMessage(tabbed_error), fixed = TRUE))
+
 # CLI canary/all scope and species isolation.
 canary_output <- file.path(root, "canary")
 canary_run <- run_cli(canary_output, "canary")
 stopifnot(canary_run$status == 0L)
 stopifnot(identical(sort(list.dirs(canary_output, recursive = FALSE, full.names = FALSE)), sort(species_names)))
 for (species in species_names) {
-  species_metadata <- read.delim(
-    file.path(canary_output, species, "sample_metadata.tsv"), check.names = FALSE
+  species_metadata <- read_metadata_tsv(
+    file.path(canary_output, species, "sample_metadata.tsv")
   )
   stopifnot(nrow(species_metadata) == 1L, identical(species_metadata$canary, "true"))
+  expected_tissue <- sample_rows$tissue[
+    sample_rows$species == species & sample_rows$canary == "true"
+  ]
+  stopifnot(identical(species_metadata$tissue, expected_tissue))
   counts <- read_matrix(canary_output, species, "transcript_counts.tsv")
   stopifnot(ncol(counts) == 2L)
 }
@@ -124,6 +153,11 @@ for (species in species_names) {
   expected_samples <- sample_rows$sample_id[sample_rows$species == species]
   stopifnot(identical(names(counts), c("feature_id", expected_samples)))
 }
+all_metadata <- read.delim(
+  file.path(all_output, "glycine_max", "sample_metadata.tsv"),
+  check.names = FALSE, na.strings = character(), colClasses = "character"
+)
+stopifnot(identical(all_metadata$tissue, c("", "NA")))
 
 # A successful rerun is content-idempotent and leaves no staging/backup siblings.
 before_rerun <- snapshot(all_output)
