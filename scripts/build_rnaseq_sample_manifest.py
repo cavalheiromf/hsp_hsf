@@ -106,6 +106,8 @@ def select_row(manifest: Path, scope: str, index: int) -> dict[str, str]:
         rows = [row for row in rows if row["canary"] == "true"]
     elif scope != "all":
         raise ValueError(f"Unknown scope: {scope}")
+    if index < 0:
+        raise ValueError(f"Array index {index} is outside scope {scope} ({len(rows)} rows)")
     try:
         return rows[index]
     except IndexError as error:

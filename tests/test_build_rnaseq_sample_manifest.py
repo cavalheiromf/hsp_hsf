@@ -59,6 +59,12 @@ class RnaSeqManifestTest(unittest.TestCase):
         write_manifest(build_rows(self.csv_path, self.root, expected_samples=2), manifest)
         self.assertNotIn(b"\r\n", manifest.read_bytes())
 
+    def test_rejects_negative_array_index(self):
+        manifest = self.root / "manifest.tsv"
+        write_manifest(build_rows(self.csv_path, self.root, expected_samples=2), manifest)
+        with self.assertRaisesRegex(ValueError, "Array index -1 is outside scope all"):
+            select_row(manifest, "all", -1)
+
     def test_rejects_missing_fastq_mate(self):
         (self.root / "data/fastq/SRR26553587_2.fastq.gz").unlink()
         with self.assertRaisesRegex(ValueError, "Missing R2"):
