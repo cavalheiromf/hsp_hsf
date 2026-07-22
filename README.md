@@ -1,6 +1,24 @@
 # HSP and HSF Gene Family Analysis & RNA-seq Pipeline (`hsp_hsf`)
 
+![R Version](https://img.shields.io/badge/R-4.5.1-blue?logo=r)
+![Python Version](https://img.shields.io/badge/Python-3.12.12-blue?logo=python)
+![Quarto Version](https://img.shields.io/badge/Quarto-1.9.37-blue)
+![Mamba Version](https://img.shields.io/badge/Mamba-2.1.1-green)
+![License](https://img.shields.io/badge/License-Internal-orange)
+
 A reproducible bioinformatics pipeline designed for identifying, validating, and performing post-quantification quality control (QC) for Heat Shock Proteins (HSP) and Heat Shock Transcription Factors (HSF) across plant species under drought and elevated CO₂ conditions.
+
+## 📑 Table of Contents
+- [Target Species](#-target-species)
+- [Prerequisites & Environment](#-prerequisites--environment)
+- [Key Components & Workflow](#-key-components--workflow)
+- [Repository Structure](#-repository-structure)
+- [Testing & Verification](#-testing--verification)
+- [Running the Exploratory QC Pipeline](#-running-the-exploratory-qc-pipeline)
+- [Pipeline Outputs](#-pipeline-outputs)
+- [License & Attribution](#-license--attribution)
+
+---
 
 ## 🌿 Target Species
 
@@ -9,6 +27,19 @@ This repository covers comparative analysis across four key crop and model plant
 - ***Sorghum bicolor*** (Sorghum) — BioProject `PRJNA742236`
 - ***Triticum aestivum*** (Wheat) — BioProjects `PRJNA1249400` & `PRJNA793265`
 - ***Glycine max*** (Soybean) — BioProjects `PRJNA295411` & `PRJNA1033144`
+
+---
+
+## ⚙️ Prerequisites & Environment
+
+This pipeline requires specific tools which may be available via your HPC's `module` system or managed via `mamba`/`conda` environments.
+
+### Core Dependencies:
+- **R** (>= 4.5.1): Includes packages like `DESeq2`, `tximport`, `ggplot2`.
+- **Python** (>= 3.12.12): For data validation and CLI wrappers.
+- **Quarto** (>= 1.9.37): For generating interactive HTML reports.
+- **Salmon**: For transcript-level quantification.
+- **FastQC**: For quality control of raw reads (usually loaded via HPC module).
 
 ---
 
@@ -90,6 +121,16 @@ Rscript scripts/run_rnaseq_exploratory_qc.R \
   reports/rnaseq_exploratory_qc.qmd \
   reports/rnaseq_exploratory_qc.html
 ```
+
+---
+
+## 📊 Pipeline Outputs
+
+After running the pipeline, the following artifacts are generated:
+- **`results/rnaseq/matrices/final/`**: Contains raw counts (`counts.tsv`), normalized TPM (`tpm.tsv`), and length matrices ready for downstream Differential Expression (DE) analysis.
+- **`results/rnaseq/exploratory_qc/tables/`**: VST-normalized counts and summary statistics for the dataset.
+- **`results/rnaseq/exploratory_qc/figures/`**: High-quality (SVG/PNG) figures covering read depth, PCA clustering, Euclidean distance heatmaps, and sample-to-sample correlations.
+- **`reports/rnaseq_exploratory_qc.html`**: A fully interactive HTML report containing exploratory metadata, diagnostic warnings, and integrated plots for intuitive quality control.
 
 ---
 
