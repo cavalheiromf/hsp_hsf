@@ -1,0 +1,15 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR26553585	glycine_max	PRJNA1033144		Elevated CO2 concentration + Drought stress 1	1	paired	data/fastq/SRR26553585_1.fastq.gz	data/fastq/SRR26553585_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR26553586	glycine_max	PRJNA1033144		Elevated CO2 concentration + Controlled water treatment 3	3	paired	data/fastq/SRR26553586_1.fastq.gz	data/fastq/SRR26553586_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR26553587	glycine_max	PRJNA1033144		Elevated CO2 concentration + Controlled water treatment 2	2	paired	data/fastq/SRR26553587_1.fastq.gz	data/fastq/SRR26553587_2.fastq.gz	results/rnaseq/glycine_max/index	true
+SRR26553588	glycine_max	PRJNA1033144		Elevated CO2 concentration + Controlled water treatment 1	1	paired	data/fastq/SRR26553588_1.fastq.gz	data/fastq/SRR26553588_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR26553594	glycine_max	PRJNA1033144		Elevated CO2 concentration + Drought stress 2	2	paired	data/fastq/SRR26553594_1.fastq.gz	data/fastq/SRR26553594_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR26553593	glycine_max	PRJNA1033144		Elevated CO2 concentration + Drought stress 3	3	paired	data/fastq/SRR26553593_1.fastq.gz	data/fastq/SRR26553593_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545903	glycine_max	PRJNA295411	Root	Elevated CO2, air-drying 50min, rep2	2	paired	data/fastq/SRR2545903_1.fastq.gz	data/fastq/SRR2545903_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545902	glycine_max	PRJNA295411	Root	Elevated CO2, air-drying 50min, rep1	1	paired	data/fastq/SRR2545902_1.fastq.gz	data/fastq/SRR2545902_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545899	glycine_max	PRJNA295411	Root	Elevated CO2, well-watered, rep2	2	paired	data/fastq/SRR2545899_1.fastq.gz	data/fastq/SRR2545899_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545898	glycine_max	PRJNA295411	Root	Elevated CO2, well-watered, rep1	1	paired	data/fastq/SRR2545898_1.fastq.gz	data/fastq/SRR2545898_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545901	glycine_max	PRJNA295411	Root	Ambient CO2, air-drying 50min, rep2	2	paired	data/fastq/SRR2545901_1.fastq.gz	data/fastq/SRR2545901_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545900	glycine_max	PRJNA295411	Root	Ambient CO2, air-drying 50min, rep1	1	paired	data/fastq/SRR2545900_1.fastq.gz	data/fastq/SRR2545900_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545897	glycine_max	PRJNA295411	Root	Ambient CO2, well-watered, rep2	2	paired	data/fastq/SRR2545897_1.fastq.gz	data/fastq/SRR2545897_2.fastq.gz	results/rnaseq/glycine_max/index	false
+SRR2545896	glycine_max	PRJNA295411	Root	Ambient CO2, well-watered, rep1	1	paired	data/fastq/SRR2545896_1.fastq.gz	data/fastq/SRR2545896_2.fastq.gz	results/rnaseq/glycine_max/index	false

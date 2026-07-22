@@ -1,0 +1,19 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR33083344	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2+drought_biol_rep1	1	paired	data/fastq/SRR33083344_1.fastq.gz	data/fastq/SRR33083344_2.fastq.gz	results/rnaseq/triticum_aestivum/index	true
+SRR33083345	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2+drought_biol_rep2	2	paired	data/fastq/SRR33083345_1.fastq.gz	data/fastq/SRR33083345_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083338	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2+drought_biol_rep3	3	paired	data/fastq/SRR33083338_1.fastq.gz	data/fastq/SRR33083338_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083351	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2_biol_rep1	1	paired	data/fastq/SRR33083351_1.fastq.gz	data/fastq/SRR33083351_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083339	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2_biol_rep2	2	paired	data/fastq/SRR33083339_1.fastq.gz	data/fastq/SRR33083339_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083340	triticum_aestivum	PRJNA1249400	Leaf	Alana_elevated-CO2_biol_rep3	3	paired	data/fastq/SRR33083340_1.fastq.gz	data/fastq/SRR33083340_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083352	triticum_aestivum	PRJNA1249400	Leaf	Alana_drought_biol_rep1	1	paired	data/fastq/SRR33083352_1.fastq.gz	data/fastq/SRR33083352_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083346	triticum_aestivum	PRJNA1249400	Leaf	Alana_drought_biol_rep2	2	paired	data/fastq/SRR33083346_1.fastq.gz	data/fastq/SRR33083346_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083347	triticum_aestivum	PRJNA1249400	Leaf	Alana_drought_biol_rep3	3	paired	data/fastq/SRR33083347_1.fastq.gz	data/fastq/SRR33083347_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083355	triticum_aestivum	PRJNA1249400	Leaf	Alana_control_biol_rep1	1	paired	data/fastq/SRR33083355_1.fastq.gz	data/fastq/SRR33083355_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083354	triticum_aestivum	PRJNA1249400	Leaf	Alana_control_biol_rep2	2	paired	data/fastq/SRR33083354_1.fastq.gz	data/fastq/SRR33083354_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR33083353	triticum_aestivum	PRJNA1249400	Leaf	Alana_control_biol_rep3	3	paired	data/fastq/SRR33083353_1.fastq.gz	data/fastq/SRR33083353_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385284	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2. Rep1	1	paired	data/fastq/SRR17385284_1.fastq.gz	data/fastq/SRR17385284_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385295	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2 and drought Rep3	3	paired	data/fastq/SRR17385295_1.fastq.gz	data/fastq/SRR17385295_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385296	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2 and drought Rep2	2	paired	data/fastq/SRR17385296_1.fastq.gz	data/fastq/SRR17385296_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385300	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2 and drought Rep1	1	paired	data/fastq/SRR17385300_1.fastq.gz	data/fastq/SRR17385300_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385302	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2. Rep2	2	paired	data/fastq/SRR17385302_1.fastq.gz	data/fastq/SRR17385302_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false
+SRR17385301	triticum_aestivum	PRJNA793265	Leaf	Elevated CO2. Rep3	3	paired	data/fastq/SRR17385301_1.fastq.gz	data/fastq/SRR17385301_2.fastq.gz	results/rnaseq/triticum_aestivum/index	false

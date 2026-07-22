@@ -1,0 +1,9 @@
+sample_id	species	bioproject	tissue	condition	replicate	layout	r1	r2	salmon_index	canary
+SRR14935707	sorghum_bicolor	PRJNA742236	Green prop roots	Elevated CO2, drought, rep1	1	paired	data/fastq/SRR14935707_1.fastq.gz	data/fastq/SRR14935707_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935708	sorghum_bicolor	PRJNA742236	Green prop roots	Elevated CO2, drought, rep2	2	paired	data/fastq/SRR14935708_1.fastq.gz	data/fastq/SRR14935708_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935709	sorghum_bicolor	PRJNA742236	Green prop roots	Elevated CO2, drought, rep3	3	paired	data/fastq/SRR14935709_1.fastq.gz	data/fastq/SRR14935709_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935710	sorghum_bicolor	PRJNA742236	Green prop roots	Elevated CO2, drought, rep4	4	paired	data/fastq/SRR14935710_1.fastq.gz	data/fastq/SRR14935710_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935703	sorghum_bicolor	PRJNA742236	Green prop roots	Ambient CO2, drought, rep1	1	paired	data/fastq/SRR14935703_1.fastq.gz	data/fastq/SRR14935703_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935704	sorghum_bicolor	PRJNA742236	Green prop roots	Ambient CO2, drought, rep2	2	paired	data/fastq/SRR14935704_1.fastq.gz	data/fastq/SRR14935704_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	true
+SRR14935705	sorghum_bicolor	PRJNA742236	Green prop roots	Ambient CO2, drought, rep3	3	paired	data/fastq/SRR14935705_1.fastq.gz	data/fastq/SRR14935705_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
+SRR14935706	sorghum_bicolor	PRJNA742236	Green prop roots	Ambient CO2, drought, rep4	4	paired	data/fastq/SRR14935706_1.fastq.gz	data/fastq/SRR14935706_2.fastq.gz	results/rnaseq/sorghum_bicolor/index	false
