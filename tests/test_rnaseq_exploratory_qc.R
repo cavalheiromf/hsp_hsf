@@ -25,3 +25,24 @@ negative <- counts; negative[1, 1] <- -1
 stopifnot(inherits(try(calculate_group_qc(negative, metadata, salmon_qc), silent = TRUE), "try-error"))
 nonfinite <- counts; nonfinite[1, 1] <- Inf
 stopifnot(inherits(try(calculate_group_qc(nonfinite, metadata, salmon_qc), silent = TRUE), "try-error"))
+
+output <- tempfile("rnaseq-qc-output-")
+dir.create(output)
+write_group_tables(result, "fixture_group", file.path(output, "tables"))
+write_group_figures(result, "fixture_group", file.path(output, "figures"))
+
+expected_figures <- as.vector(outer(
+  paste0("fixture_group_", c(
+    "library_size", "detected_genes", "vst_distribution", "pca",
+    "correlation_heatmap", "distance_heatmap"
+  )), c("png", "svg"), paste, sep = "."
+))
+stopifnot(identical(sort(list.files(file.path(output, "figures"))), sort(expected_figures)))
+stopifnot(all(file.info(file.path(output, "figures", expected_figures))$size > 0))
+
+metrics <- read.delim(file.path(output, "tables", "fixture_group_sample_metrics.tsv"),
+                      stringsAsFactors = FALSE, check.names = FALSE)
+stopifnot(identical(metrics$sample_id, metadata$sample_id))
+scores <- read.delim(file.path(output, "tables", "fixture_group_pca_scores.tsv"),
+                     stringsAsFactors = FALSE, check.names = FALSE)
+stopifnot(identical(scores$sample_id, metadata$sample_id))
