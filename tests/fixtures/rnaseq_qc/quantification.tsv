@@ -1,0 +1,7 @@
+sample_id	species	status	mapping_flag	percent_mapped	library_types
+s1	test_species	pass	pass	85.0	IU
+s2	test_species	pass	pass	84.0	IU
+s3	test_species	pass	pass	86.0	IU
+s4	test_species	pass	pass	82.0	IU
+s5	test_species	pass	pass	83.0	IU
+s6	test_species	pass	warning	65.0	IU

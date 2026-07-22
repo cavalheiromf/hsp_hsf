@@ -1,0 +1,7 @@
+sample_id	species	bioproject	condition	replicate	analysis_group	co2	water	dehydration_stage	design_cell
+s1	test_species	TEST1	ambient control rep1	1	fixture_group	ambient	well_watered		ambient:well_watered
+s2	test_species	TEST1	ambient control rep2	2	fixture_group	ambient	well_watered		ambient:well_watered
+s3	test_species	TEST1	ambient control rep3	3	fixture_group	ambient	well_watered		ambient:well_watered
+s4	test_species	TEST1	elevated drought rep1	1	fixture_group	elevated	drought		elevated:drought
+s5	test_species	TEST1	elevated drought rep2	2	fixture_group	elevated	drought		elevated:drought
+s6	test_species	TEST1	elevated drought rep3	3	fixture_group	elevated	drought		elevated:drought
