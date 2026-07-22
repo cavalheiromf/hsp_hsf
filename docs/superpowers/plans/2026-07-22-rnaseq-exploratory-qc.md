@@ -1011,10 +1011,15 @@ validate_qc_collection <- function(stage, expected_design) {
   group_figures <- unlist(lapply(groups, function(group) {
     as.vector(outer(paste0(group, "_", stems), c("png", "svg"), paste, sep = "."))
   }))
-  joint <- as.vector(outer(
-    c("wheat_joint_bioproject_pca", "soybean_joint_bioproject_pca"),
+  joint_labels <- c(triticum_aestivum = "wheat", glycine_max = "soybean")
+  joint_labels <- joint_labels[names(joint_labels) %in% expected_design$species]
+  joint_labels <- joint_labels[vapply(names(joint_labels), function(species) {
+    length(unique(expected_design$bioproject[expected_design$species == species])) > 1L
+  }, logical(1))]
+  joint <- if (length(joint_labels)) as.vector(outer(
+    paste0(unname(joint_labels), "_joint_bioproject_pca"),
     c("png", "svg"), paste, sep = "."
-  ))
+  )) else character()
   required <- c(required_tables, "session_info.txt",
                 file.path("figures", c(group_figures, joint)),
                 "report/rnaseq_exploratory_qc.html")
@@ -1026,11 +1031,13 @@ validate_qc_collection <- function(stage, expected_design) {
   flags <- read.delim(file.path(stage, "tables", "advisory_flags.tsv"),
                       stringsAsFactors = FALSE, check.names = FALSE)
   if (!identical(metrics$sample_id, expected_design$sample_id)) stop("QC metrics sample order mismatch")
-  if (nrow(metrics) != 58L || anyDuplicated(metrics$sample_id)) stop("QC metrics must contain 58 unique samples")
+  if (nrow(metrics) != nrow(expected_design) || anyDuplicated(metrics$sample_id)) {
+    stop("QC metrics must contain every expected sample exactly once")
+  }
   if (!identical(unique(metrics$analysis_group), groups)) stop("QC analysis-group order mismatch")
   numeric_columns <- vapply(metrics, is.numeric, logical(1))
   if (any(!is.finite(as.matrix(metrics[numeric_columns])))) stop("Nonfinite sample metric")
-  accepted <- c("SRR39669466", "SRR39669467")
+  accepted <- intersect(c("SRR39669466", "SRR39669467"), expected_design$sample_id)
   mapping_flags <- flags[flags$metric == "percent_mapped", "sample_id"]
   if (!all(accepted %in% mapping_flags)) stop("Accepted Setaria warnings are missing")
   invisible(TRUE)
@@ -1040,6 +1047,18 @@ validate_qc_collection <- function(stage, expected_design) {
 Implement `publish_qc_collection()` with this transaction:
 
 ```r
+relative_path <- function(target, from) {
+  target_parts <- strsplit(normalizePath(target, mustWork = FALSE), "/", fixed = TRUE)[[1]]
+  from_parts <- strsplit(normalizePath(from, mustWork = TRUE), "/", fixed = TRUE)[[1]]
+  common <- 0L
+  limit <- min(length(target_parts), length(from_parts))
+  while (common < limit && target_parts[common + 1L] == from_parts[common + 1L]) {
+    common <- common + 1L
+  }
+  file.path(c(rep("..", length(from_parts) - common),
+              target_parts[(common + 1L):length(target_parts)]))
+}
+
 publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
                                   failure_hook = function(stage) invisible(NULL),
                                   rename_fn = file.rename) {
@@ -1073,8 +1092,10 @@ publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
   }
   stage <- NULL
 
-  relative_target <- file.path("..", "results", "rnaseq", "exploratory_qc",
-                               "report", "rnaseq_exploratory_qc.html")
+  relative_target <- relative_path(
+    file.path(output_root, "report", "rnaseq_exploratory_qc.html"),
+    dirname(report_html)
+  )
   temporary_link <- tempfile(".rnaseq-qc-report.link-", tmpdir = dirname(report_html))
   if (!file.symlink(relative_target, temporary_link) || !rename_fn(temporary_link, report_html)) {
     failed_new <- tempfile(".rnaseq-qc.failed-new-", tmpdir = parent)
@@ -1117,6 +1138,7 @@ build_qc_collection <- function(inputs, stage, report_qmd) {
     list(species = "glycine_max", label = "soybean")
   )) {
     metadata <- inputs$design[inputs$design$species == entry$species, , drop = FALSE]
+    if (!nrow(metadata) || length(unique(metadata$bioproject)) < 2L) next
     counts <- inputs$counts_by_species[[entry$species]][, metadata$sample_id, drop = FALSE]
     write_joint_species_pca(counts, metadata, entry$label, file.path(stage, "figures"))
   }
