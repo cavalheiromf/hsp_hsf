@@ -93,13 +93,22 @@ calculate_group_qc <- function(counts, metadata, salmon_qc) {
     size_factor = sizeFactors(dds)
   ) %>% left_join(salmon_qc, by = c("sample_id", "species"))
   distributional_flags <- build_advisory_flags(sample_metrics, pca$x, correlation)
-  mapping_flags <- data.frame(
-    sample_id = salmon_qc$sample_id[salmon_qc$mapping_flag != "pass"],
-    metric = "percent_mapped",
-    observed_value = salmon_qc$percent_mapped[salmon_qc$mapping_flag != "pass"],
-    rule = "mapping_flag != pass", severity = "warning",
-    explanation = "Preserved Salmon mapping warning", stringsAsFactors = FALSE
-  )
+  warn_idx <- which(salmon_qc$mapping_flag != "pass")
+  mapping_flags <- if (length(warn_idx) > 0L) {
+    data.frame(
+      sample_id = salmon_qc$sample_id[warn_idx],
+      metric = "percent_mapped",
+      observed_value = salmon_qc$percent_mapped[warn_idx],
+      rule = "mapping_flag != pass", severity = "warning",
+      explanation = "Preserved Salmon mapping warning", stringsAsFactors = FALSE
+    )
+  } else {
+    data.frame(
+      sample_id = character(), metric = character(), observed_value = numeric(),
+      rule = character(), severity = character(), explanation = character(),
+      stringsAsFactors = FALSE
+    )
+  }
   flags <- bind_rows(distributional_flags, mapping_flags)
   list(
     filtered_counts = filtered$counts, keep = filtered$keep,
@@ -295,8 +304,9 @@ relative_path <- function(target, from) {
   while (common < limit && target_parts[common + 1L] == from_parts[common + 1L]) {
     common <- common + 1L
   }
-  file.path(c(rep("..", length(from_parts) - common),
-              target_parts[(common + 1L):length(target_parts)]))
+  up <- rep("..", length(from_parts) - common)
+  down <- target_parts[(common + 1L):length(target_parts)]
+  paste(c(up, down), collapse = "/")
 }
 
 publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
@@ -308,7 +318,7 @@ publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
   dir.create(stage)
   output_backup <- NULL
   report_backup <- NULL
-  on.exit(if (dir.exists(stage)) unlink(stage, recursive = TRUE), add = TRUE)
+  on.exit(if (!is.null(stage) && dir.exists(stage)) unlink(stage, recursive = TRUE), add = TRUE)
 
   build_qc_collection(inputs, stage, report_qmd)
   validate_qc_collection(stage, inputs$design)
@@ -318,12 +328,15 @@ publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
     output_backup <- tempfile(paste0(".", basename(output_root), ".backup-"), tmpdir = parent)
     if (!rename_fn(output_root, output_backup)) stop("Cannot back up QC collection")
   }
-  if (file.exists(report_html) || nzchar(Sys.readlink(report_html))) {
+  if (file.exists(report_html)) {
+    dir.create(dirname(report_html), recursive = TRUE, showWarnings = FALSE)
     report_backup <- tempfile(".rnaseq-qc-report.backup-", tmpdir = dirname(report_html))
     if (!rename_fn(report_html, report_backup)) {
       if (!is.null(output_backup)) rename_fn(output_backup, output_root)
       stop("Cannot back up QC report link")
     }
+  } else if (nzchar(Sys.readlink(report_html))) {
+    unlink(report_html)
   }
   if (!rename_fn(stage, output_root)) {
     if (!is.null(output_backup)) rename_fn(output_backup, output_root)
@@ -394,7 +407,7 @@ build_qc_collection <- function(inputs, stage, report_qmd) {
   status <- system2("quarto", c(
     "render", basename(report_qmd), "--to", "html",
     "--output", "rnaseq_exploratory_qc.html",
-    "-P", paste0("data_root:", normalizePath(stage))
+    "-P", "data_root:.."
   ))
   unlink(staged_qmd)
   setwd(old_wd)

@@ -1,0 +1,95 @@
+---
+title: "RNA-seq exploratory quality control"
+format:
+  html:
+    toc: true
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+params:
+  data_root: "../results/rnaseq/exploratory_qc"
+---
+
+```{r}
+root <- params$data_root
+read_qc_table <- function(name) read.delim(
+  file.path(root, name), stringsAsFactors = FALSE, check.names = FALSE,
+  na.strings = character()
+)
+metrics <- read_qc_table(file.path("tables", "sample_metrics.tsv"))
+filters <- read_qc_table(file.path("tables", "gene_filter_summary.tsv"))
+scores <- read_qc_table(file.path("tables", "pca_scores.tsv"))
+flags <- read_qc_table(file.path("tables", "advisory_flags.tsv"))
+contrasts <- read_qc_table("contrasts.tsv")
+groups <- unique(metrics$analysis_group)
+```
+
+## Methods
+
+Gene-level Salmon estimated counts were filtered independently within each analysis group. Genes required a count of at least 10 in at least the smallest replicate-group size. Counts were rounded only for DESeq2 input; size factors and a blind variance-stabilizing transformation were used for unsupervised diagnostics. No sample was removed and no differential-expression test was fitted.
+
+## Dataset summary
+
+```{r}
+knitr::kable(as.data.frame.matrix(table(metrics$species, metrics$bioproject)),
+             caption = "Samples by species and BioProject")
+knitr::kable(filters, caption = "Gene filtering by analysis group")
+```
+
+## Salmon QC
+
+```{r}
+salmon_columns <- intersect(c("sample_id", "species", "percent_mapped",
+                              "mapping_flag", "library_types"), names(metrics))
+knitr::kable(metrics[, salmon_columns, drop = FALSE],
+             caption = "Salmon mapping and library diagnostics")
+```
+
+## Analysis groups
+
+```{r, results='asis'}
+for (group in groups) {
+  cat("\n### ", group, "\n\n", sep = "")
+  stems <- c("library_size", "detected_genes", "vst_distribution", "pca",
+             "correlation_heatmap", "distance_heatmap")
+  paths <- file.path(root, "figures", paste0(group, "_", stems, ".png"))
+  knitr::include_graphics(paths)
+  cat("\n")
+}
+```
+
+## Advisory flags
+
+```{r}
+if (nrow(flags)) knitr::kable(flags) else cat("No advisory flags were emitted.")
+```
+
+## Joint BioProject diagnostics
+
+These plots visualize BioProject separation only; they do not define cross-project biological contrasts.
+
+```{r}
+joint_plots <- file.path(
+  root, "figures", c("wheat_joint_bioproject_pca.png",
+                     "soybean_joint_bioproject_pca.png")
+)
+joint_plots <- joint_plots[file.exists(joint_plots)]
+if (length(joint_plots)) knitr::include_graphics(joint_plots)
+```
+
+## Estimable contrasts
+
+The following contrasts are documented for a later differential-expression workflow and were not fitted here.
+
+```{r}
+knitr::kable(contrasts)
+```
+
+## Reproducibility
+
+```{r, results='asis'}
+cat("```text\n")
+cat(readLines(file.path(root, "session_info.txt")), sep = "\n")
+cat("\n```\n")
+```

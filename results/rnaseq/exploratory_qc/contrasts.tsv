@@ -1,0 +1,23 @@
+contrast_id	species	bioproject	analysis_group	model_formula	effect_type	numerator	denominator	reference_levels	estimable	notes
+setaria_elevated_vs_ambient_control	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	elevated	ambient	co2=ambient;dehydration_stage=control	true	CO2 effect at control
+setaria_elevated_vs_ambient_cycle_1	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	elevated	ambient	co2=ambient;dehydration_stage=control	true	CO2 effect at cycle 1
+setaria_elevated_vs_ambient_cycle_3	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	elevated	ambient	co2=ambient;dehydration_stage=control	true	CO2 effect at cycle 3
+setaria_cycle_1_vs_control_ambient	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	cycle_1	control	co2=ambient;dehydration_stage=control	true	Cycle 1 effect at ambient CO2
+setaria_cycle_3_vs_control_ambient	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	cycle_3	control	co2=ambient;dehydration_stage=control	true	Cycle 3 effect at ambient CO2
+setaria_cycle_1_vs_control_elevated	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	cycle_1	control	co2=ambient;dehydration_stage=control	true	Cycle 1 effect at elevated CO2
+setaria_cycle_3_vs_control_elevated	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	simple_effect	cycle_3	control	co2=ambient;dehydration_stage=control	true	Cycle 3 effect at elevated CO2
+setaria_co2_x_cycle_1	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	interaction	elevated:cycle_1	ambient:cycle_1	co2=ambient;dehydration_stage=control	true	CO2 by cycle 1 interaction
+setaria_co2_x_cycle_3	setaria_viridis	PRJNA1496374	setaria_prjna1496374	~ co2 * dehydration_stage	interaction	elevated:cycle_3	ambient:cycle_3	co2=ambient;dehydration_stage=control	true	CO2 by cycle 3 interaction
+sorghum_elevated_vs_ambient	sorghum_bicolor	PRJNA742236	sorghum_prjna742236	~ co2	main_effect	elevated	ambient	co2=ambient	true	CO2 effect under drought
+wheat_prjna1249400_elevated_vs_ambient_well_watered	triticum_aestivum	PRJNA1249400	wheat_prjna1249400	~ co2 * water	simple_effect	elevated	ambient	co2=ambient;water=well_watered	true	CO2 effect when well watered
+wheat_prjna1249400_elevated_vs_ambient_drought	triticum_aestivum	PRJNA1249400	wheat_prjna1249400	~ co2 * water	simple_effect	elevated	ambient	co2=ambient;water=well_watered	true	CO2 effect under drought
+wheat_prjna1249400_drought_vs_well_watered_ambient	triticum_aestivum	PRJNA1249400	wheat_prjna1249400	~ co2 * water	simple_effect	drought	well_watered	co2=ambient;water=well_watered	true	Drought effect at ambient CO2
+wheat_prjna1249400_drought_vs_well_watered_elevated	triticum_aestivum	PRJNA1249400	wheat_prjna1249400	~ co2 * water	simple_effect	drought	well_watered	co2=ambient;water=well_watered	true	Drought effect at elevated CO2
+wheat_prjna1249400_co2_x_drought	triticum_aestivum	PRJNA1249400	wheat_prjna1249400	~ co2 * water	interaction	elevated:drought	ambient:drought	co2=ambient;water=well_watered	true	CO2 by drought interaction
+wheat_prjna793265_drought_vs_well_watered	triticum_aestivum	PRJNA793265	wheat_prjna793265	~ water	main_effect	drought	well_watered	water=well_watered	true	Drought effect under elevated CO2
+soybean_prjna295411_elevated_vs_ambient_well_watered	glycine_max	PRJNA295411	soybean_prjna295411	~ co2 * water	simple_effect	elevated	ambient	co2=ambient;water=well_watered	true	CO2 effect when well watered
+soybean_prjna295411_elevated_vs_ambient_air_drying	glycine_max	PRJNA295411	soybean_prjna295411	~ co2 * water	simple_effect	elevated	ambient	co2=ambient;water=well_watered	true	CO2 effect during air drying
+soybean_prjna295411_air_drying_vs_well_watered_ambient	glycine_max	PRJNA295411	soybean_prjna295411	~ co2 * water	simple_effect	air_drying	well_watered	co2=ambient;water=well_watered	true	Air-drying effect at ambient CO2
+soybean_prjna295411_air_drying_vs_well_watered_elevated	glycine_max	PRJNA295411	soybean_prjna295411	~ co2 * water	simple_effect	air_drying	well_watered	co2=ambient;water=well_watered	true	Air-drying effect at elevated CO2
+soybean_prjna295411_co2_x_air_drying	glycine_max	PRJNA295411	soybean_prjna295411	~ co2 * water	interaction	elevated:air_drying	ambient:air_drying	co2=ambient;water=well_watered	true	CO2 by air-drying interaction
+soybean_prjna1033144_drought_vs_well_watered	glycine_max	PRJNA1033144	soybean_prjna1033144	~ water	main_effect	drought	well_watered	water=well_watered	true	Drought effect under elevated CO2

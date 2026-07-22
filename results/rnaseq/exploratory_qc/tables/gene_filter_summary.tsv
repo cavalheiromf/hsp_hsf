@@ -1,0 +1,7 @@
+analysis_group	genes_input	genes_retained	genes_removed	minimum_replicates
+wheat_prjna1249400	120744	58511	62233	3
+soybean_prjna1033144	57147	34641	22506	3
+wheat_prjna793265	120744	54774	65970	3
+soybean_prjna295411	57147	37643	19504	2
+sorghum_prjna742236	35567	19412	16155	4
+setaria_prjna1496374	38334	26341	11993	3

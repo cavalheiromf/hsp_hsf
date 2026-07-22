@@ -1,0 +1,9 @@
+sample_id	metric	observed_value	rule	severity	explanation
+SRR39669472	detected_ge_10	22024	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669473	detected_ge_10	22672	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669474	detected_ge_10	23092	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669465	detected_ge_10	22896	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669466	detected_ge_10	22603	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669467	detected_ge_10	22630	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669466	percent_mapped	68.4068747931246	mapping_flag != pass	warning	Preserved Salmon mapping warning
+SRR39669467	percent_mapped	63.8427750048399	mapping_flag != pass	warning	Preserved Salmon mapping warning

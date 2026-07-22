@@ -1,0 +1,16 @@
+sample_id	metric	observed_value	rule	severity	explanation
+SRR33083344	median_spearman_correlation	0.925695804515281	low 3-MAD bounds [0.940276, 0.974298]	review	Advisory median_spearman_correlation deviation
+SRR33083338	median_spearman_correlation	0.937241065224978	low 3-MAD bounds [0.940276, 0.974298]	review	Advisory median_spearman_correlation deviation
+SRR33083344	pca_centroid_distance	120.332228599796	high 3-MAD bounds [50.1223, 100.631]	review	Advisory pca_centroid_distance deviation
+SRR26553594	detected_ge_10	33462	low 3-MAD bounds [33566.1, 33881.9]	review	Advisory detected_ge_10 deviation
+SRR17385284	pca_centroid_distance	56.5172352168422	high 3-MAD bounds [41.1438, 55.2387]	review	Advisory pca_centroid_distance deviation
+SRR14935703	median_spearman_correlation	0.86842407995794	low 3-MAD bounds [0.888413, 0.996458]	review	Advisory median_spearman_correlation deviation
+SRR14935706	median_spearman_correlation	0.841926288585253	low 3-MAD bounds [0.888413, 0.996458]	review	Advisory median_spearman_correlation deviation
+SRR39669472	detected_ge_10	22024	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669473	detected_ge_10	22672	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669474	detected_ge_10	23092	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669465	detected_ge_10	22896	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669466	detected_ge_10	22603	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669467	detected_ge_10	22630	low 3-MAD bounds [23103.7, 25732.3]	review	Advisory detected_ge_10 deviation
+SRR39669466	percent_mapped	68.4068747931246	mapping_flag != pass	warning	Preserved Salmon mapping warning
+SRR39669467	percent_mapped	63.8427750048399	mapping_flag != pass	warning	Preserved Salmon mapping warning

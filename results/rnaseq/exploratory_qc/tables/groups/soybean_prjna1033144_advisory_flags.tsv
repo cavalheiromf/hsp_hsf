@@ -1,0 +1,2 @@
+sample_id	metric	observed_value	rule	severity	explanation
+SRR26553594	detected_ge_10	33462	low 3-MAD bounds [33566.1, 33881.9]	review	Advisory detected_ge_10 deviation

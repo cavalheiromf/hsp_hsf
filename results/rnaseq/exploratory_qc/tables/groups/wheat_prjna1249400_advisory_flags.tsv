@@ -1,0 +1,4 @@
+sample_id	metric	observed_value	rule	severity	explanation
+SRR33083344	median_spearman_correlation	0.925695804515281	low 3-MAD bounds [0.940276, 0.974298]	review	Advisory median_spearman_correlation deviation
+SRR33083338	median_spearman_correlation	0.937241065224978	low 3-MAD bounds [0.940276, 0.974298]	review	Advisory median_spearman_correlation deviation
+SRR33083344	pca_centroid_distance	120.332228599796	high 3-MAD bounds [50.1223, 100.631]	review	Advisory pca_centroid_distance deviation
