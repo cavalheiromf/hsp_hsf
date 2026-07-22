@@ -46,3 +46,37 @@ stopifnot(identical(metrics$sample_id, metadata$sample_id))
 scores <- read.delim(file.path(output, "tables", "fixture_group_pca_scores.tsv"),
                      stringsAsFactors = FALSE, check.names = FALSE)
 stopifnot(identical(scores$sample_id, metadata$sample_id))
+
+# Rollback test: simulated failure during publication leaves existing root unchanged
+old_root <- tempfile("published-qc-")
+dir.create(old_root)
+writeLines("old sentinel", file.path(old_root, "sentinel.txt"))
+report_link <- tempfile("published-report-", fileext = ".html")
+writeLines("old report", report_link)
+
+fixture_inputs <- list(
+  design = metadata,
+  salmon_qc = salmon_qc,
+  counts_by_species = list(test_species = counts),
+  contrasts = data.frame(
+    contrast_id = "c1", species = "test_species", bioproject = "TEST1",
+    analysis_group = "fixture_group", model_formula = "~ 1",
+    effect_type = "main_effect", numerator = "a", denominator = "b",
+    reference_levels = "ref", estimable = "true", notes = "test",
+    stringsAsFactors = FALSE
+  )
+)
+
+failure_hook <- function(stage) stop("injected late failure")
+message <- tryCatch({
+  publish_qc_collection(fixture_inputs, old_root, report_link,
+                        report_qmd = "reports/rnaseq_exploratory_qc.qmd",
+                        failure_hook = failure_hook)
+  NA_character_
+}, error = conditionMessage)
+stopifnot(grepl("injected late failure", message, fixed = TRUE))
+stopifnot(identical(readLines(file.path(old_root, "sentinel.txt")), "old sentinel"))
+stopifnot(identical(readLines(report_link), "old report"))
+stopifnot(!length(Sys.glob(paste0(old_root, ".stage-*"))))
+stopifnot(!length(Sys.glob(paste0(old_root, ".backup-*"))))
+

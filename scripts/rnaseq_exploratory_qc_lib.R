@@ -243,3 +243,162 @@ write_joint_species_pca <- function(counts, metadata, species_label, figure_dir)
          y = sprintf("PC2 (%.1f%%)", variance[2])) + theme_bw(base_size = 11)
   save_plot_pair(plot, file.path(figure_dir, paste0(species_label, "_joint_bioproject_pca")))
 }
+
+validate_qc_collection <- function(stage, expected_design) {
+  required_tables <- c(
+    "tables/sample_metrics.tsv", "tables/gene_filter_summary.tsv",
+    "tables/pca_scores.tsv", "tables/advisory_flags.tsv", "contrasts.tsv"
+  )
+  groups <- unique(expected_design$analysis_group)
+  stems <- c("library_size", "detected_genes", "vst_distribution", "pca",
+             "correlation_heatmap", "distance_heatmap")
+  group_figures <- unlist(lapply(groups, function(group) {
+    as.vector(outer(paste0(group, "_", stems), c("png", "svg"), paste, sep = "."))
+  }))
+  joint_labels <- c(triticum_aestivum = "wheat", glycine_max = "soybean")
+  joint_labels <- joint_labels[names(joint_labels) %in% expected_design$species]
+  joint_labels <- joint_labels[vapply(names(joint_labels), function(species) {
+    length(unique(expected_design$bioproject[expected_design$species == species])) > 1L
+  }, logical(1))]
+  joint <- if (length(joint_labels)) as.vector(outer(
+    paste0(unname(joint_labels), "_joint_bioproject_pca"),
+    c("png", "svg"), paste, sep = "."
+  )) else character()
+  required <- c(required_tables, "session_info.txt",
+                file.path("figures", c(group_figures, joint)),
+                "report/rnaseq_exploratory_qc.html")
+  missing <- required[!file.exists(file.path(stage, required))]
+  if (length(missing)) stop("Staged QC collection missing: ", paste(missing, collapse = ", "))
+  if (any(file.info(file.path(stage, required))$size <= 0)) stop("Staged QC collection contains empty files")
+  metrics <- read.delim(file.path(stage, "tables", "sample_metrics.tsv"),
+                        stringsAsFactors = FALSE, check.names = FALSE)
+  flags <- read.delim(file.path(stage, "tables", "advisory_flags.tsv"),
+                      stringsAsFactors = FALSE, check.names = FALSE)
+  if (!identical(metrics$sample_id, expected_design$sample_id)) stop("QC metrics sample order mismatch")
+  if (nrow(metrics) != nrow(expected_design) || anyDuplicated(metrics$sample_id)) {
+    stop("QC metrics must contain every expected sample exactly once")
+  }
+  if (!identical(unique(metrics$analysis_group), groups)) stop("QC analysis-group order mismatch")
+  numeric_columns <- vapply(metrics, is.numeric, logical(1))
+  if (any(!is.finite(as.matrix(metrics[numeric_columns])))) stop("Nonfinite sample metric")
+  accepted <- intersect(c("SRR39669466", "SRR39669467"), expected_design$sample_id)
+  mapping_flags <- flags[flags$metric == "percent_mapped", "sample_id"]
+  if (!all(accepted %in% mapping_flags)) stop("Accepted Setaria warnings are missing")
+  invisible(TRUE)
+}
+
+relative_path <- function(target, from) {
+  target_parts <- strsplit(normalizePath(target, mustWork = FALSE), "/", fixed = TRUE)[[1]]
+  from_parts <- strsplit(normalizePath(from, mustWork = TRUE), "/", fixed = TRUE)[[1]]
+  common <- 0L
+  limit <- min(length(target_parts), length(from_parts))
+  while (common < limit && target_parts[common + 1L] == from_parts[common + 1L]) {
+    common <- common + 1L
+  }
+  file.path(c(rep("..", length(from_parts) - common),
+              target_parts[(common + 1L):length(target_parts)]))
+}
+
+publish_qc_collection <- function(inputs, output_root, report_html, report_qmd,
+                                  failure_hook = function(stage) invisible(NULL),
+                                  rename_fn = file.rename) {
+  parent <- dirname(output_root)
+  dir.create(parent, recursive = TRUE, showWarnings = FALSE)
+  stage <- tempfile(paste0(".", basename(output_root), ".stage-"), tmpdir = parent)
+  dir.create(stage)
+  output_backup <- NULL
+  report_backup <- NULL
+  on.exit(if (dir.exists(stage)) unlink(stage, recursive = TRUE), add = TRUE)
+
+  build_qc_collection(inputs, stage, report_qmd)
+  validate_qc_collection(stage, inputs$design)
+  failure_hook(stage)
+
+  if (dir.exists(output_root)) {
+    output_backup <- tempfile(paste0(".", basename(output_root), ".backup-"), tmpdir = parent)
+    if (!rename_fn(output_root, output_backup)) stop("Cannot back up QC collection")
+  }
+  if (file.exists(report_html) || nzchar(Sys.readlink(report_html))) {
+    report_backup <- tempfile(".rnaseq-qc-report.backup-", tmpdir = dirname(report_html))
+    if (!rename_fn(report_html, report_backup)) {
+      if (!is.null(output_backup)) rename_fn(output_backup, output_root)
+      stop("Cannot back up QC report link")
+    }
+  }
+  if (!rename_fn(stage, output_root)) {
+    if (!is.null(output_backup)) rename_fn(output_backup, output_root)
+    if (!is.null(report_backup)) rename_fn(report_backup, report_html)
+    stop("Cannot promote QC collection")
+  }
+  stage <- NULL
+
+  relative_target <- relative_path(
+    file.path(output_root, "report", "rnaseq_exploratory_qc.html"),
+    dirname(report_html)
+  )
+  temporary_link <- tempfile(".rnaseq-qc-report.link-", tmpdir = dirname(report_html))
+  if (!file.symlink(relative_target, temporary_link) || !rename_fn(temporary_link, report_html)) {
+    failed_new <- tempfile(".rnaseq-qc.failed-new-", tmpdir = parent)
+    rename_fn(output_root, failed_new)
+    if (!is.null(output_backup)) rename_fn(output_backup, output_root)
+    if (!is.null(report_backup)) rename_fn(report_backup, report_html)
+    unlink(failed_new, recursive = TRUE)
+    stop("Report-link promotion failed; previous collection restored")
+  }
+  if (!is.null(output_backup)) unlink(output_backup, recursive = TRUE)
+  if (!is.null(report_backup)) unlink(report_backup)
+  invisible(output_root)
+}
+
+build_qc_collection <- function(inputs, stage, report_qmd) {
+  group_order <- unique(inputs$design$analysis_group)
+  results <- setNames(vector("list", length(group_order)), group_order)
+  for (group in group_order) {
+    metadata <- inputs$design[inputs$design$analysis_group == group, , drop = FALSE]
+    species <- unique(metadata$species)
+    if (length(species) != 1L) stop("Analysis group contains multiple species")
+    counts <- inputs$counts_by_species[[species]][, metadata$sample_id, drop = FALSE]
+    salmon <- inputs$salmon_qc[match(metadata$sample_id, inputs$salmon_qc$sample_id), , drop = FALSE]
+    result <- calculate_group_qc(counts, metadata, salmon)
+    results[[group]] <- result
+    write_group_tables(result, group, file.path(stage, "tables", "groups"))
+    write_group_figures(result, group, file.path(stage, "figures"))
+  }
+  write_combined_tables(results, group_order, inputs$contrasts, stage)
+  for (entry in list(
+    list(species = "triticum_aestivum", label = "wheat"),
+    list(species = "glycine_max", label = "soybean")
+  )) {
+    metadata <- inputs$design[inputs$design$species == entry$species, , drop = FALSE]
+    if (!nrow(metadata) || length(unique(metadata$bioproject)) < 2L) next
+    counts <- inputs$counts_by_species[[entry$species]][, metadata$sample_id, drop = FALSE]
+    write_joint_species_pca(counts, metadata, entry$label, file.path(stage, "figures"))
+  }
+  session <- c(
+    capture.output(sessionInfo()),
+    paste("Bioconductor", as.character(BiocManager::version())),
+    paste("DESeq2", as.character(packageVersion("DESeq2"))),
+    paste("tidyverse", as.character(packageVersion("tidyverse"))),
+    paste("ggplot2", as.character(packageVersion("ggplot2"))),
+    paste("pheatmap", as.character(packageVersion("pheatmap"))),
+    paste("Quarto", system2("quarto", "--version", stdout = TRUE))
+  )
+  writeLines(session, file.path(stage, "session_info.txt"))
+  report_dir <- file.path(stage, "report")
+  dir.create(report_dir, recursive = TRUE, showWarnings = FALSE)
+  staged_qmd <- file.path(report_dir, basename(report_qmd))
+  file.copy(report_qmd, staged_qmd, overwrite = TRUE)
+  old_wd <- getwd()
+  on.exit(setwd(old_wd), add = TRUE)
+  setwd(report_dir)
+  status <- system2("quarto", c(
+    "render", basename(report_qmd), "--to", "html",
+    "--output", "rnaseq_exploratory_qc.html",
+    "-P", paste0("data_root:", normalizePath(stage))
+  ))
+  unlink(staged_qmd)
+  setwd(old_wd)
+  if (!identical(status, 0L)) stop("Quarto rendering failed with status ", status)
+  invisible(results)
+}
+
