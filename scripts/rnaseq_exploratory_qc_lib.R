@@ -1,3 +1,4 @@
+source("scripts/utils_io.R")
 suppressPackageStartupMessages({
   library(DESeq2)
   library(dplyr)
@@ -122,17 +123,7 @@ calculate_group_qc <- function(counts, metadata, salmon_qc) {
   )
 }
 
-write_tsv_safe <- function(x, path) {
-  if (anyNA(x)) stop("Cannot serialize NA values to ", path)
-  char_cols <- names(x)[vapply(x, is.character, logical(1))]
-  if (length(char_cols) > 0L) {
-    if (any(vapply(x[char_cols], function(column) {
-      any(grepl("[\t\r\n]", column))
-    }, logical(1)))) stop("Unsafe TSV character in ", path)
-  }
-  dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
-  write.table(x, path, sep = "\t", quote = FALSE, row.names = FALSE, na = "")
-}
+# write_tsv_safe is provided by utils_io.R
 
 write_group_tables <- function(result, group, table_dir) {
   correlation <- result$correlation_long

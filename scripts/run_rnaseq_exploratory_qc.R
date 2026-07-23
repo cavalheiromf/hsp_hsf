@@ -10,10 +10,7 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) != 6L) {
   stop("Usage: run_rnaseq_exploratory_qc.R DESIGN SALMON_QC MATRIX_ROOT OUTPUT_ROOT REPORT_QMD REPORT_HTML")
 }
-read_character_tsv <- function(path) read.delim(
-  path, stringsAsFactors = FALSE, check.names = FALSE,
-  colClasses = "character", na.strings = character()
-)
+# read_character_tsv is provided by utils_io.R (via rnaseq_design_lib.R)
 design <- read_character_tsv(args[1])
 validate_design(design)
 salmon_qc <- read.delim(args[2], stringsAsFactors = FALSE, check.names = FALSE,

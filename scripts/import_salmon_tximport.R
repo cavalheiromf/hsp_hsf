@@ -1,30 +1,15 @@
 #!/usr/bin/env Rscript
 
+source("scripts/utils_io.R")
+
 write_matrix <- function(matrix, path) {
   output <- data.frame(feature_id = rownames(matrix), matrix, check.names = FALSE)
   write.table(output, path, sep = "\t", quote = FALSE, row.names = FALSE)
 }
 
-read_metadata_tsv <- function(path) {
-  read.delim(
-    path, stringsAsFactors = FALSE, check.names = FALSE,
-    colClasses = "character", na.strings = character(), quote = ""
-  )
-}
+# read_metadata_tsv is provided by utils_io.R
 
-validate_metadata_values <- function(sample_rows) {
-  character_columns <- lapply(sample_rows, as.character)
-  if (any(vapply(character_columns, anyNA, logical(1)))) {
-    stop("sample metadata contains missing metadata values; use an empty string when intentional")
-  }
-  unsafe <- vapply(
-    character_columns,
-    function(values) any(grepl("[\t\r\n]", values, perl = TRUE)),
-    logical(1)
-  )
-  if (any(unsafe)) stop("sample metadata values may not contain tabs or newlines")
-  invisible(TRUE)
-}
+# validate_metadata_values is provided by utils_io.R
 
 read_output_matrix <- function(path, expected_features, expected_samples, positive = FALSE) {
   table <- read.delim(path, stringsAsFactors = FALSE, check.names = FALSE)
@@ -76,12 +61,7 @@ validate_species_output <- function(output_dir, sample_rows, tx2gene) {
   invisible(TRUE)
 }
 
-require_columns <- function(table, required, label) {
-  missing <- setdiff(required, names(table))
-  if (length(missing) > 0L) {
-    stop(label, " lacks required columns: ", paste(missing, collapse = ", "))
-  }
-}
+# require_columns is provided by utils_io.R
 
 import_species <- function(sample_rows, quant_root, tx2gene_path, output_dir) {
   if (!requireNamespace("tximport", quietly = TRUE)) {

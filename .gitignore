@@ -1,25 +1,32 @@
+# Downloaded / generated data
 data/sra/
 data/fastq/
 data/tmp/
 data/reference/
 data/pfam/
-data/sra
-data/fastq
-data/tmp
-data/reference
-data/pfam
+
+# Intermediate workspaces
 work/
+graphify-out/
+
+# Results: large or regenerable artifacts
 results/interproscan/
-logs/
-tools/downloads/
-tools/interproscan-*/
 results/rnaseq/*/index/
-results/rnaseq/*/index
 results/rnaseq/*/transcriptome.fa
 results/rnaseq/quant/
-graphify-out/
+
+# Tool installations
+tools/downloads/
+tools/interproscan-*/
+
+# Logs
+logs/
+
+# Python
 __pycache__/
 *.pyc
+
+# Editor / IDE
 .vscode/
 .ll
 .worktrees/

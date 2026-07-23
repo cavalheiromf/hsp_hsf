@@ -1,3 +1,4 @@
+source("scripts/utils_io.R")
 suppressPackageStartupMessages(library(dplyr))
 
 required_manifest_columns <- c(
@@ -5,10 +6,7 @@ required_manifest_columns <- c(
   "replicate", "layout", "r1", "r2", "salmon_index", "canary"
 )
 
-require_columns <- function(x, required, label) {
-  missing <- setdiff(required, names(x))
-  if (length(missing)) stop(label, " missing columns: ", paste(missing, collapse = ", "))
-}
+# require_columns is provided by utils_io.R
 
 parse_one_condition <- function(species, bioproject, condition) {
   result <- list(co2 = NA_character_, water = NA_character_,
